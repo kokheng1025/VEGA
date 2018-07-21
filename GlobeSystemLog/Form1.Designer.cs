@@ -41,8 +41,9 @@ namespace EasyTreeView
 			this.txtName = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.panel2 = new System.Windows.Forms.Panel();
-			this.checkBox2 = new System.Windows.Forms.CheckBox();
+			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			this.cbFormFunction = new System.Windows.Forms.CheckBox();
+			this.cbClassFunction = new System.Windows.Forms.CheckBox();
 			this.ProcessResult = new System.Windows.Forms.Label();
 			this.gbxSearchByText = new System.Windows.Forms.GroupBox();
 			this.btnNodeTextSearch = new System.Windows.Forms.Button();
@@ -56,7 +57,6 @@ namespace EasyTreeView
 			this.cmnuAddNode = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmnuRemoveNode = new System.Windows.Forms.ToolStripMenuItem();
 			this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-			this.groupBox1 = new System.Windows.Forms.GroupBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
@@ -64,9 +64,9 @@ namespace EasyTreeView
 			this.gbxNodeInfo.SuspendLayout();
 			this.panel1.SuspendLayout();
 			this.panel2.SuspendLayout();
+			this.groupBox1.SuspendLayout();
 			this.gbxSearchByText.SuspendLayout();
 			this.contextMenuStrip1.SuspendLayout();
-			this.groupBox1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// splitContainer1
@@ -212,15 +212,16 @@ namespace EasyTreeView
 			this.panel2.Size = new System.Drawing.Size(213, 508);
 			this.panel2.TabIndex = 3;
 			// 
-			// checkBox2
+			// groupBox1
 			// 
-			this.checkBox2.AutoSize = true;
-			this.checkBox2.Location = new System.Drawing.Point(6, 48);
-			this.checkBox2.Name = "checkBox2";
-			this.checkBox2.Size = new System.Drawing.Size(98, 21);
-			this.checkBox2.TabIndex = 1;
-			this.checkBox2.Text = "checkBox2";
-			this.checkBox2.UseVisualStyleBackColor = true;
+			this.groupBox1.Controls.Add(this.cbFormFunction);
+			this.groupBox1.Controls.Add(this.cbClassFunction);
+			this.groupBox1.Location = new System.Drawing.Point(9, 13);
+			this.groupBox1.Name = "groupBox1";
+			this.groupBox1.Size = new System.Drawing.Size(201, 95);
+			this.groupBox1.TabIndex = 2;
+			this.groupBox1.TabStop = false;
+			this.groupBox1.Text = "Function Selection";
 			// 
 			// cbFormFunction
 			// 
@@ -234,6 +235,17 @@ namespace EasyTreeView
 			this.cbFormFunction.Text = "Form Functions";
 			this.cbFormFunction.UseVisualStyleBackColor = true;
 			this.cbFormFunction.CheckedChanged += new System.EventHandler(this.cbFormFunctions);
+			// 
+			// cbClassFunction
+			// 
+			this.cbClassFunction.AutoSize = true;
+			this.cbClassFunction.Location = new System.Drawing.Point(6, 48);
+			this.cbClassFunction.Name = "cbClassFunction";
+			this.cbClassFunction.Size = new System.Drawing.Size(129, 21);
+			this.cbClassFunction.TabIndex = 1;
+			this.cbClassFunction.Text = "Class Functions";
+			this.cbClassFunction.UseVisualStyleBackColor = true;
+			this.cbClassFunction.CheckedChanged += new System.EventHandler(this.cbClassFunction_Click);
 			// 
 			// ProcessResult
 			// 
@@ -358,17 +370,6 @@ namespace EasyTreeView
 			this.cmnuRemoveNode.Text = "Remove Node";
 			this.cmnuRemoveNode.Click += new System.EventHandler(this.cmnuRemoveNode_Click);
 			// 
-			// groupBox1
-			// 
-			this.groupBox1.Controls.Add(this.cbFormFunction);
-			this.groupBox1.Controls.Add(this.checkBox2);
-			this.groupBox1.Location = new System.Drawing.Point(9, 13);
-			this.groupBox1.Name = "groupBox1";
-			this.groupBox1.Size = new System.Drawing.Size(201, 95);
-			this.groupBox1.TabIndex = 2;
-			this.groupBox1.TabStop = false;
-			this.groupBox1.Text = "Function Selection";
-			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
@@ -388,11 +389,11 @@ namespace EasyTreeView
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
 			this.panel2.ResumeLayout(false);
+			this.groupBox1.ResumeLayout(false);
+			this.groupBox1.PerformLayout();
 			this.gbxSearchByText.ResumeLayout(false);
 			this.gbxSearchByText.PerformLayout();
 			this.contextMenuStrip1.ResumeLayout(false);
-			this.groupBox1.ResumeLayout(false);
-			this.groupBox1.PerformLayout();
 			this.ResumeLayout(false);
 
         }
@@ -424,7 +425,7 @@ namespace EasyTreeView
         private System.Windows.Forms.CheckBox cbOutputLog;
 		private System.Windows.Forms.Panel panel1;
 		private System.Windows.Forms.Panel panel2;
-		private System.Windows.Forms.CheckBox checkBox2;
+		private System.Windows.Forms.CheckBox cbClassFunction;
 		private System.Windows.Forms.CheckBox cbFormFunction;
 		private System.Windows.Forms.GroupBox groupBox1;
 	}
