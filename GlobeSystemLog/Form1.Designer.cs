@@ -40,6 +40,7 @@ namespace EasyTreeView
 			this.btnOpenFolder = new System.Windows.Forms.Button();
 			this.txtName = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
+			this.panel2 = new System.Windows.Forms.Panel();
 			this.ProcessResult = new System.Windows.Forms.Label();
 			this.gbxSearchByText = new System.Windows.Forms.GroupBox();
 			this.btnNodeTextSearch = new System.Windows.Forms.Button();
@@ -53,12 +54,15 @@ namespace EasyTreeView
 			this.cmnuAddNode = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmnuRemoveNode = new System.Windows.Forms.ToolStripMenuItem();
 			this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
+			this.checkBox2 = new System.Windows.Forms.CheckBox();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
 			this.gbxNodeInfo.SuspendLayout();
 			this.panel1.SuspendLayout();
+			this.panel2.SuspendLayout();
 			this.gbxSearchByText.SuspendLayout();
 			this.contextMenuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -79,12 +83,13 @@ namespace EasyTreeView
 			// splitContainer1.Panel2
 			// 
 			this.splitContainer1.Panel2.AutoScroll = true;
+			this.splitContainer1.Panel2.Controls.Add(this.panel2);
 			this.splitContainer1.Panel2.Controls.Add(this.ProcessResult);
 			this.splitContainer1.Panel2.Controls.Add(this.gbxSearchByText);
 			this.splitContainer1.Panel2.Controls.Add(this.treeView1);
 			this.splitContainer1.Panel2.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel2_Paint);
-			this.splitContainer1.Size = new System.Drawing.Size(1006, 996);
-			this.splitContainer1.SplitterDistance = 136;
+			this.splitContainer1.Size = new System.Drawing.Size(1006, 794);
+			this.splitContainer1.SplitterDistance = 108;
 			this.splitContainer1.SplitterWidth = 5;
 			this.splitContainer1.TabIndex = 0;
 			// 
@@ -121,9 +126,9 @@ namespace EasyTreeView
 			this.cbOutputDebugView.Location = new System.Drawing.Point(17, 30);
 			this.cbOutputDebugView.Margin = new System.Windows.Forms.Padding(4);
 			this.cbOutputDebugView.Name = "cbOutputDebugView";
-			this.cbOutputDebugView.Size = new System.Drawing.Size(180, 21);
+			this.cbOutputDebugView.Size = new System.Drawing.Size(179, 21);
 			this.cbOutputDebugView.TabIndex = 10;
-			this.cbOutputDebugView.Text = "Display to DebugViewer";
+			this.cbOutputDebugView.Text = "Display in DebugViewer";
 			this.cbOutputDebugView.UseVisualStyleBackColor = true;
 			this.cbOutputDebugView.CheckedChanged += new System.EventHandler(this.cbOutputDebugView_CheckedChanged);
 			// 
@@ -133,9 +138,9 @@ namespace EasyTreeView
 			this.cbOutputLog.Location = new System.Drawing.Point(17, 4);
 			this.cbOutputLog.Margin = new System.Windows.Forms.Padding(4);
 			this.cbOutputLog.Name = "cbOutputLog";
-			this.cbOutputLog.Size = new System.Drawing.Size(136, 21);
+			this.cbOutputLog.Size = new System.Drawing.Size(139, 21);
 			this.cbOutputLog.TabIndex = 9;
-			this.cbOutputLog.Text = "Generate Logfile";
+			this.cbOutputLog.Text = "Output to LogFile";
 			this.cbOutputLog.UseVisualStyleBackColor = true;
 			this.cbOutputLog.CheckedChanged += new System.EventHandler(this.cbOutputLog_CheckedChanged);
 			// 
@@ -197,6 +202,15 @@ namespace EasyTreeView
 			this.label1.TabIndex = 0;
 			this.label1.Text = "Target Directory :";
 			// 
+			// panel2
+			// 
+			this.panel2.Controls.Add(this.checkBox2);
+			this.panel2.Controls.Add(this.checkBox1);
+			this.panel2.Location = new System.Drawing.Point(780, 26);
+			this.panel2.Name = "panel2";
+			this.panel2.Size = new System.Drawing.Size(213, 508);
+			this.panel2.TabIndex = 3;
+			// 
 			// ProcessResult
 			// 
 			this.ProcessResult.AutoSize = true;
@@ -214,11 +228,11 @@ namespace EasyTreeView
 			this.gbxSearchByText.Controls.Add(this.RevertAllBtn);
 			this.gbxSearchByText.Controls.Add(this.label3);
 			this.gbxSearchByText.Controls.Add(this.executeButton);
-			this.gbxSearchByText.Location = new System.Drawing.Point(16, 728);
+			this.gbxSearchByText.Location = new System.Drawing.Point(16, 542);
 			this.gbxSearchByText.Margin = new System.Windows.Forms.Padding(4);
 			this.gbxSearchByText.Name = "gbxSearchByText";
 			this.gbxSearchByText.Padding = new System.Windows.Forms.Padding(4);
-			this.gbxSearchByText.Size = new System.Drawing.Size(962, 114);
+			this.gbxSearchByText.Size = new System.Drawing.Size(978, 114);
 			this.gbxSearchByText.TabIndex = 2;
 			this.gbxSearchByText.TabStop = false;
 			// 
@@ -235,7 +249,7 @@ namespace EasyTreeView
 			// 
 			// btnClose
 			// 
-			this.btnClose.Location = new System.Drawing.Point(674, 60);
+			this.btnClose.Location = new System.Drawing.Point(681, 60);
 			this.btnClose.Margin = new System.Windows.Forms.Padding(4);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(280, 46);
@@ -291,7 +305,7 @@ namespace EasyTreeView
 			this.treeView1.Location = new System.Drawing.Point(16, 26);
 			this.treeView1.Margin = new System.Windows.Forms.Padding(4);
 			this.treeView1.Name = "treeView1";
-			this.treeView1.Size = new System.Drawing.Size(962, 694);
+			this.treeView1.Size = new System.Drawing.Size(757, 508);
 			this.treeView1.TabIndex = 0;
 			this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
 			this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -320,11 +334,32 @@ namespace EasyTreeView
 			this.cmnuRemoveNode.Text = "Remove Node";
 			this.cmnuRemoveNode.Click += new System.EventHandler(this.cmnuRemoveNode_Click);
 			// 
+			// checkBox1
+			// 
+			this.checkBox1.AutoSize = true;
+			this.checkBox1.Location = new System.Drawing.Point(17, 12);
+			this.checkBox1.Name = "checkBox1";
+			this.checkBox1.Size = new System.Drawing.Size(98, 21);
+			this.checkBox1.TabIndex = 0;
+			this.checkBox1.Text = "checkBox1";
+			this.checkBox1.UseVisualStyleBackColor = true;
+			this.checkBox1.CheckedChanged += new System.EventHandler(this.checkBox1_CheckedChanged);
+			// 
+			// checkBox2
+			// 
+			this.checkBox2.AutoSize = true;
+			this.checkBox2.Location = new System.Drawing.Point(17, 40);
+			this.checkBox2.Name = "checkBox2";
+			this.checkBox2.Size = new System.Drawing.Size(98, 21);
+			this.checkBox2.TabIndex = 1;
+			this.checkBox2.Text = "checkBox2";
+			this.checkBox2.UseVisualStyleBackColor = true;
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1006, 996);
+			this.ClientSize = new System.Drawing.Size(1006, 794);
 			this.Controls.Add(this.splitContainer1);
 			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "Form1";
@@ -338,6 +373,8 @@ namespace EasyTreeView
 			this.gbxNodeInfo.PerformLayout();
 			this.panel1.ResumeLayout(false);
 			this.panel1.PerformLayout();
+			this.panel2.ResumeLayout(false);
+			this.panel2.PerformLayout();
 			this.gbxSearchByText.ResumeLayout(false);
 			this.gbxSearchByText.PerformLayout();
 			this.contextMenuStrip1.ResumeLayout(false);
@@ -371,6 +408,9 @@ namespace EasyTreeView
         private System.Windows.Forms.CheckBox cbOutputDebugView;
         private System.Windows.Forms.CheckBox cbOutputLog;
 		private System.Windows.Forms.Panel panel1;
+		private System.Windows.Forms.Panel panel2;
+		private System.Windows.Forms.CheckBox checkBox2;
+		private System.Windows.Forms.CheckBox checkBox1;
 	}
 }
 
