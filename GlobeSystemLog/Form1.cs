@@ -1,6 +1,7 @@
 using GlobeSystemLog;
 using migrationTools.Components;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -248,61 +249,7 @@ namespace EasyTreeView
             }
         }
 
-        #endregion  
-
-        private void searchListOfFunctions(TreeNode n, string fileName)
-        {
-            // open file
-            StreamReader Reader = new StreamReader(fileName, Encoding.ASCII, false, 65536);
-
-            string line = String.Empty;
-            string nextWord = String.Empty;
-            string endProduceName = String.Empty;
-
-            foreach (TreeNode tn in treeView1.SelectedNode.Nodes)
-            {
-                if (tn == n) {
-                    treeView1.SelectedNode = tn;
-                }
-            }
-
-            try
-            {
-                while ((line = Reader.ReadLine()) != null)
-                {
-
-                    if (line == null || line == String.Empty) continue;
-
-                    // if line not yet finish, add it together
-                    while (line.Substring(line.Length - 1, 1) == "_")
-                    {
-                        line += Reader.ReadLine();
-                    }
-
-                   
-                    string startProduceName = String.Empty;
-                    string keyWord = String.Empty;
-                    if (Utils.IsFoundStartProcedureFunction(line, ref startProduceName, ref keyWord) == true)
-                    {
-                        //Add function in treeView
-                        TreeNode newNode = new TreeNode();
-                        newNode.Name = startProduceName;
-                        newNode.Text = startProduceName;
-                        newNode.Tag = startProduceName;
-
-                        treeView1.SelectedNode.Nodes.Add(newNode);
-                    }
-
-                }
-            }
-            catch (Exception f)
-            {
-                Debug.WriteLine("error {0}", f.Message);
-            }
-
-            // close stream before exit
-            Reader.Close();
-        }
+        #endregion  		   
 
         private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
         {
@@ -372,7 +319,102 @@ namespace EasyTreeView
             return status;
         }
 
-        private void GetTreeView(string folderPath)
+		private ArrayList searchListOfFunctions(string fileName)
+		{
+			ArrayList nodeArrayList = new ArrayList();
+
+			// open file
+			StreamReader Reader = new StreamReader(fileName, Encoding.ASCII, false, 65536);
+
+			string line = String.Empty;
+			string nextWord = String.Empty;
+			string endProduceName = String.Empty;
+
+			try
+			{
+				while ((line = Reader.ReadLine()) != null)
+				{
+
+					if (line == null || line == String.Empty) continue;
+
+					// if line not yet finish, add it together
+					while (line.Substring(line.Length - 1, 1) == "_")
+					{
+						line += Reader.ReadLine();
+					}
+
+					string startProduceName = String.Empty;
+					string keyWord = String.Empty;
+					if (Utils.IsFoundStartProcedureFunction(line, ref startProduceName, ref keyWord) == true)
+					{
+						//Add function in treeView					
+						TreeNode newNode = new TreeNode();
+						newNode.Name = startProduceName;
+						newNode.Text = startProduceName;
+						newNode.Tag = startProduceName;
+						nodeArrayList.Add(newNode);
+					}
+				}
+			}
+			catch (Exception f)
+			{
+				Debug.WriteLine("error {0}", f.Message);
+			}
+
+			// close stream before exit
+			Reader.Close();
+
+			return nodeArrayList;
+		}
+
+		private int numOfFile(string folderPath)
+		{
+			int numOfFiles = 0;
+
+			// iterate over all files in the subfolder and add them into treeNodesArrayforFiles
+			foreach (string ext in oSettings.FileExtensionList)
+			{
+				try
+				{
+					numOfFiles += Directory.GetFiles(folderPath, ext).Length;
+				}
+				catch (UnauthorizedAccessException) { }
+			}
+
+			return numOfFiles;
+		}
+		private void GetSingleFolderTreeView(string folderPath)
+		{
+			int idx = 0;
+			int fileCount = numOfFile(folderPath);
+			TreeNode[] treeNodesArrayforFiles = new TreeNode[fileCount];
+
+			foreach (string ext in oSettings.FileExtensionList)
+			{
+				string[] files = Directory.GetFiles(folderPath, ext);
+				foreach (string fileName in files)
+				{
+					string eachfileName = Path.GetFileName(fileName);
+					ArrayList list = searchListOfFunctions(fileName);
+					TreeNode[] treeNodesArrayForFunction = new TreeNode[list.Count];
+					int listIdx = 0;
+					foreach (object obj in list)
+					{
+						treeNodesArrayForFunction[listIdx] = (TreeNode)obj;
+						listIdx++;
+					}
+					treeNodesArrayforFiles[idx] = new TreeNode(eachfileName, treeNodesArrayForFunction);
+					idx++;
+				}
+			}
+
+			TreeNode finalNode = new TreeNode(Path.GetFileName(folderPath), treeNodesArrayforFiles);
+			this.treeView1.Nodes.Add(finalNode);
+			this.treeView1.SelectedNode = finalNode;
+			this.treeView1.SelectedNode.ExpandAll();
+		}
+
+		private void GetTreeView(string folderPath)
         {
             this.folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
             this.folderBrowserDialog.ShowNewFolderButton = false;
@@ -389,39 +431,30 @@ namespace EasyTreeView
             this.treeView1.Refresh();
 
             // print the folder name on a label
-            this.txtName.Text = folderPath;
-
-			// list all sub directory and save into treeNodesArray
+            this.txtName.Text = folderPath;			
+			
 			int directoryCount = Directory.GetDirectories(folderPath).Length;
-			if (directoryCount == 0)
-			{
-				TreeNode node = new TreeNode(folderPath);
-				this.treeView1.Nodes.Add(node);
+
+			// No Sub directory
+			if (directoryCount == 0)				
+			{				
+				GetSingleFolderTreeView(folderPath);
 				return;
 			}
 
+			// list all sub directory and save into treeNodesArray
 			TreeNode[] treeNodesArray = new TreeNode[directoryCount];
 
 			int i = 0;
 			int totalFileCount = 0; 
-			///string[] fileExts = { "*.frm", "*.cls" };
 
 			foreach (string strDir in Directory.GetDirectories(folderPath))
 			{
 				int idx = 0;
-				int fileCount = 0;
-				DirectoryInfo subfolder = new DirectoryInfo(strDir);
+				int fileCount = numOfFile(strDir);
+				totalFileCount += fileCount;
 
-				// iterate over all files in the subfolder and add them into treeNodesArrayforFiles
-				foreach (string ext in oSettings.FileExtensionList)
-				{
-					try
-					{
-						fileCount += Directory.GetFiles(strDir, ext).Length;
-						totalFileCount += fileCount;
-					}
-					catch (UnauthorizedAccessException) { }					
-				}
+				DirectoryInfo subfolder = new DirectoryInfo(strDir);
 
 				// skip if file count = 0
 				if (fileCount == 0)
@@ -435,7 +468,15 @@ namespace EasyTreeView
 					foreach (string fileName in files)
 					{
 						string eachfileName = Path.GetFileName(fileName);
-						treeNodesArrayforFiles[idx] = new TreeNode(eachfileName);
+						ArrayList list = searchListOfFunctions(fileName);
+						TreeNode[] treeNodesArrayForFunction = new TreeNode[list.Count];
+						int listIdx = 0;
+						foreach(object obj in list)
+						{
+							treeNodesArrayForFunction[listIdx] = (TreeNode)obj;
+							listIdx++;
+						}
+						treeNodesArrayforFiles[idx] = new TreeNode(eachfileName, treeNodesArrayForFunction);
 						idx++;
 					}
 				}
