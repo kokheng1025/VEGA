@@ -452,13 +452,13 @@ namespace EasyTreeView
 			{
 				int idx = 0;
 				int fileCount = numOfFile(strDir);
-				totalFileCount += fileCount;
-
 				DirectoryInfo subfolder = new DirectoryInfo(strDir);
 
-				// skip if file count = 0
-				if (fileCount == 0)
+				// skip if file count = 0 or temp folder
+				if (fileCount == 0 || subfolder.Name == "temp")
 					continue;
+				
+				totalFileCount += fileCount;
 
 				TreeNode[] treeNodesArrayforFiles = new TreeNode[fileCount];
 
