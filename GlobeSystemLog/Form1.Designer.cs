@@ -47,7 +47,7 @@ namespace EasyTreeView
 			this.txtNodeTextSearch = new System.Windows.Forms.TextBox();
 			this.RevertAllBtn = new System.Windows.Forms.Button();
 			this.label3 = new System.Windows.Forms.Label();
-			this.CodeAnalysisButton = new System.Windows.Forms.Button();
+			this.executeButton = new System.Windows.Forms.Button();
 			this.treeView1 = new System.Windows.Forms.TreeView();
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.cmnuAddNode = new System.Windows.Forms.ToolStripMenuItem();
@@ -213,7 +213,7 @@ namespace EasyTreeView
 			this.gbxSearchByText.Controls.Add(this.txtNodeTextSearch);
 			this.gbxSearchByText.Controls.Add(this.RevertAllBtn);
 			this.gbxSearchByText.Controls.Add(this.label3);
-			this.gbxSearchByText.Controls.Add(this.CodeAnalysisButton);
+			this.gbxSearchByText.Controls.Add(this.executeButton);
 			this.gbxSearchByText.Location = new System.Drawing.Point(16, 728);
 			this.gbxSearchByText.Margin = new System.Windows.Forms.Padding(4);
 			this.gbxSearchByText.Name = "gbxSearchByText";
@@ -273,16 +273,16 @@ namespace EasyTreeView
 			this.label3.TabIndex = 5;
 			this.label3.Text = "Function Name Search:";
 			// 
-			// CodeAnalysisButton
+			// executeButton
 			// 
-			this.CodeAnalysisButton.Location = new System.Drawing.Point(0, 60);
-			this.CodeAnalysisButton.Margin = new System.Windows.Forms.Padding(4);
-			this.CodeAnalysisButton.Name = "CodeAnalysisButton";
-			this.CodeAnalysisButton.Size = new System.Drawing.Size(280, 46);
-			this.CodeAnalysisButton.TabIndex = 3;
-			this.CodeAnalysisButton.Text = "Code Analysis";
-			this.CodeAnalysisButton.UseVisualStyleBackColor = true;
-			this.CodeAnalysisButton.Click += new System.EventHandler(this.codeAnalysisButton_Click);
+			this.executeButton.Location = new System.Drawing.Point(0, 60);
+			this.executeButton.Margin = new System.Windows.Forms.Padding(4);
+			this.executeButton.Name = "executeButton";
+			this.executeButton.Size = new System.Drawing.Size(280, 46);
+			this.executeButton.TabIndex = 3;
+			this.executeButton.Text = "Run";
+			this.executeButton.UseVisualStyleBackColor = true;
+			this.executeButton.Click += new System.EventHandler(this.executeButton_Click);
 			// 
 			// treeView1
 			// 
@@ -361,7 +361,7 @@ namespace EasyTreeView
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button RevertAllBtn;
-        private System.Windows.Forms.Button CodeAnalysisButton;
+        private System.Windows.Forms.Button executeButton;
         private System.Windows.Forms.Button btnOpenFolder;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;
 		private System.Windows.Forms.Label ProcessResult;

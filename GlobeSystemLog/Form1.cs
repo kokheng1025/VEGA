@@ -308,31 +308,6 @@ namespace EasyTreeView
             Reader.Close();
         }
 
-		private void btnOpenFolder_Click(object sender, EventArgs e)
-		{
-			DialogResult result = this.folderBrowserDialog.ShowDialog();
-			if (result == DialogResult.OK)
-			{
-				GetTreeView(this.folderBrowserDialog.SelectedPath);
-			}
-		}
-
-        //Create Log
-        private void button1_MouseClick(object sender, MouseEventArgs e)
-        {
-            CheckedFiles.Clear();
-            List<TreeNode> checkedNodes = CheckedNodes();
-            foreach (TreeNode n in checkedNodes)
-            {
-                //MessageBox.Show(n.Text);
-                CheckedFiles.Add(n.Text);                
-            }
-            foreach (string file in CheckedFiles)
-            {
-                MessageBox.Show(file);
-            }
-        }
-
         private void treeView1_AfterCheck(object sender, TreeViewEventArgs e)
         {
             if (e.Node == RootNode)
@@ -370,65 +345,6 @@ namespace EasyTreeView
             }
 
             return flagFunction;
-        }
-
-		private void codeAnalysisButton_Click(object sender, EventArgs e)
-		{
-            if (SaveSettings() == false)
-            {
-                return;
-            }
-
-            // Create GLBSysLog.bas file
-            oSettings.WriteVBLoggerFile();
-
-            int status = (int)SystemLogStatusCode.Success;
-            string targetFile = String.Empty;
-
-            CheckedFiles.Clear();
-            List<TreeNode> checkedNodes = CheckedNodes();
-            foreach (TreeNode n in checkedNodes)
-            {
-                CheckedFiles.Add(n.Text);
-            }
-
-			if (Utils.Initialize(oPath.TargetFolder) == (int)SystemLogStatusCode.Success)
-			{
-				foreach (string file in CheckedFiles)
-				{
-                    if(isFunction(file))
-                    {
-                        // code analysis
-                        CodeParser parser = new CodeParser();
-                        status = parser.ParseFile(Path.Combine(oPath.TargetFolder, file), CheckedFiles);
-                        if (status != (int)SystemLogStatusCode.Success)
-                        {
-                            targetFile = file;
-                            break;
-                        }
-                    }
-				}
-			}
-                
-            // overwrite all processed files into original folder 
-            DialogResult dialogResult = MessageBox.Show("Overwrite the original files ?", "Add GlobeSystemLog Trace",
-                MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
-            if (dialogResult == DialogResult.Yes)
-            {
-                if ((Utils.replaceTargetFiles(oPath.TargetFolder)) == (int)SystemLogStatusCode.Success)
-                    ProcessResult.Text = "Sucessful!!";
-                else
-                    ProcessResult.Text = string.Format("Failed on generate Debug Trace Message --> {0}", targetFile);
-            }
-		}
-
-        private void btnLogFile_Click(object sender, EventArgs e)
-        {
-            txtFilename.Text = "";
-            this.folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
-            this.folderBrowserDialog.ShowNewFolderButton = false;
-            DialogResult result = this.folderBrowserDialog.ShowDialog();
-            txtFilename.Text = string.Format("{0}\\{1}", this.folderBrowserDialog.SelectedPath, Path.GetFileName(oPath.LogFilename));
         }
 
         private bool SaveSettings()
@@ -542,7 +458,76 @@ namespace EasyTreeView
 			}
 		}
 
-        private void close_Click(object sender, EventArgs e)
+		private void btnOpenFolder_Click(object sender, EventArgs e)
+		{
+			DialogResult result = this.folderBrowserDialog.ShowDialog();
+			if (result == DialogResult.OK)
+			{
+				GetTreeView(this.folderBrowserDialog.SelectedPath);
+			}
+		}
+
+		private void executeButton_Click(object sender, EventArgs e)
+		{
+			if (SaveSettings() == false)
+			{
+				return;
+			}
+
+			// Create GLBSysLog.bas file
+			oSettings.WriteVBLoggerFile();
+
+			int status = (int)SystemLogStatusCode.Success;
+			string targetFile = String.Empty;
+
+			CheckedFiles.Clear();
+			List<TreeNode> checkedNodes = CheckedNodes();
+			foreach (TreeNode n in checkedNodes)
+			{
+				CheckedFiles.Add(n.Text);
+			}
+
+			if (Utils.Initialize(oPath.TargetFolder) == (int)SystemLogStatusCode.Success)
+			{
+				foreach (string file in CheckedFiles)
+				{
+					if (isFunction(file))
+					{
+						// code analysis
+						CodeParser parser = new CodeParser();
+						status = parser.ParseFile(Path.Combine(oPath.TargetFolder, file), CheckedFiles);
+						if (status != (int)SystemLogStatusCode.Success)
+						{
+							targetFile = file;
+							break;
+						}
+					}
+				}
+			}
+
+			// overwrite all processed files into original folder 
+			DialogResult dialogResult = MessageBox.Show("Overwrite the original files ?", "Add GlobeSystemLog Trace",
+				MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+			if (dialogResult == DialogResult.Yes)
+			{
+				if ((Utils.replaceTargetFiles(oPath.TargetFolder)) == (int)SystemLogStatusCode.Success)
+					ProcessResult.Text = "Sucessful!!";
+				else
+					ProcessResult.Text = string.Format("Failed on generate Debug Trace Message --> {0}", targetFile);
+			}
+		}
+
+
+		private void btnLogFile_Click(object sender, EventArgs e)
+		{
+			txtFilename.Text = "";
+			this.folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
+			this.folderBrowserDialog.ShowNewFolderButton = false;
+			DialogResult result = this.folderBrowserDialog.ShowDialog();
+			txtFilename.Text = string.Format("{0}\\{1}", this.folderBrowserDialog.SelectedPath, Path.GetFileName(oPath.LogFilename));
+		}
+
+		private void close_Click(object sender, EventArgs e)
         {
             this.Close();
         }
