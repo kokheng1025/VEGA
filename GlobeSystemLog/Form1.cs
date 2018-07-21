@@ -466,17 +466,27 @@ namespace EasyTreeView
 
 			foreach (string strDir in Directory.GetDirectories(folderPath))
 			{
-				int idx = 0;
-				int fileCount = numOfFile(strDir);
 				DirectoryInfo subfolder = new DirectoryInfo(strDir);
 
+				int idx = 0;
+				int fileCount = numOfFile(strDir);
+
+				TreeNode[] treeNodesArrayforFiles; 
 				// skip if file count = 0 or temp folder
 				if (fileCount == 0 || subfolder.Name == "temp")
+				{
+					treeNodesArrayforFiles = new TreeNode[1];
+					string emptyFolderName = Path.GetFileName(strDir);
+					treeNodesArray[i] = new TreeNode(emptyFolderName);
+					i++;
 					continue;
-				
-				totalFileCount += fileCount;
+				}
+				else
+				{
+					totalFileCount += fileCount;
+				}
 
-				TreeNode[] treeNodesArrayforFiles = new TreeNode[fileCount];
+				treeNodesArrayforFiles = new TreeNode[fileCount];
 
 				foreach (string ext in oSettings.FileExtensionList)
 				{
@@ -503,6 +513,7 @@ namespace EasyTreeView
 
 			if (totalFileCount > 0)
 			{
+				
 				TreeNode finalNode = new TreeNode(Path.GetFileName(folderPath), treeNodesArray);
 				this.treeView1.Nodes.Add(finalNode);
 				this.treeView1.SelectedNode = finalNode;
