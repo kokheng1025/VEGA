@@ -347,6 +347,9 @@ namespace EasyTreeView
 					string keyWord = String.Empty;
 					if (Utils.IsFoundStartProcedureFunction(line, ref startProduceName, ref keyWord) == true)
 					{
+						if (!cbFormFunction.Checked && (startProduceName.IndexOf("Form") != -1))
+							continue;
+
 						//Add function in treeView					
 						TreeNode newNode = new TreeNode();
 						newNode.Name = startProduceName;
@@ -636,7 +639,7 @@ namespace EasyTreeView
 
 		private void cbFormFunctions(object sender, EventArgs e)
 		{
-
+			GetTreeView(this.folderBrowserDialog.SelectedPath);
 		}
 	}
 }
