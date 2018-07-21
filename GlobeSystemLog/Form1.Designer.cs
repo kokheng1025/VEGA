@@ -41,7 +41,7 @@ namespace EasyTreeView
 			this.label1 = new System.Windows.Forms.Label();
 			this.ProcessResult = new System.Windows.Forms.Label();
 			this.btnClose = new System.Windows.Forms.Button();
-			this.generateLoggerButton = new System.Windows.Forms.Button();
+			this.RevertAllBtn = new System.Windows.Forms.Button();
 			this.CodeAnalysisButton = new System.Windows.Forms.Button();
 			this.gbxSearchByText = new System.Windows.Forms.GroupBox();
 			this.btnNodeTextSearch = new System.Windows.Forms.Button();
@@ -79,13 +79,10 @@ namespace EasyTreeView
 			// splitContainer1.Panel2
 			// 
 			this.splitContainer1.Panel2.Controls.Add(this.ProcessResult);
-			this.splitContainer1.Panel2.Controls.Add(this.btnClose);
-			this.splitContainer1.Panel2.Controls.Add(this.generateLoggerButton);
-			this.splitContainer1.Panel2.Controls.Add(this.CodeAnalysisButton);
 			this.splitContainer1.Panel2.Controls.Add(this.gbxSearchByText);
 			this.splitContainer1.Panel2.Controls.Add(this.treeView1);
-			this.splitContainer1.Size = new System.Drawing.Size(1130, 996);
-			this.splitContainer1.SplitterDistance = 126;
+			this.splitContainer1.Size = new System.Drawing.Size(1006, 996);
+			this.splitContainer1.SplitterDistance = 136;
 			this.splitContainer1.SplitterWidth = 5;
 			this.splitContainer1.TabIndex = 0;
 			// 
@@ -134,16 +131,16 @@ namespace EasyTreeView
 			// lblFilename
 			// 
 			this.lblFilename.AutoSize = true;
-			this.lblFilename.Location = new System.Drawing.Point(19, 60);
+			this.lblFilename.Location = new System.Drawing.Point(10, 60);
 			this.lblFilename.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.lblFilename.Name = "lblFilename";
-			this.lblFilename.Size = new System.Drawing.Size(101, 17);
+			this.lblFilename.Size = new System.Drawing.Size(119, 17);
 			this.lblFilename.TabIndex = 8;
-			this.lblFilename.Text = "Log Filename :";
+			this.lblFilename.Text = "Logfile Directory :";
 			// 
 			// btnFilename
 			// 
-			this.btnFilename.Location = new System.Drawing.Point(728, 57);
+			this.btnFilename.Location = new System.Drawing.Point(618, 57);
 			this.btnFilename.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.btnFilename.Name = "btnFilename";
 			this.btnFilename.Size = new System.Drawing.Size(139, 25);
@@ -157,12 +154,12 @@ namespace EasyTreeView
 			this.txtFilename.Location = new System.Drawing.Point(135, 60);
 			this.txtFilename.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.txtFilename.Name = "txtFilename";
-			this.txtFilename.Size = new System.Drawing.Size(585, 22);
+			this.txtFilename.Size = new System.Drawing.Size(470, 22);
 			this.txtFilename.TabIndex = 6;
 			// 
 			// btnOpenFolder
 			// 
-			this.btnOpenFolder.Location = new System.Drawing.Point(728, 26);
+			this.btnOpenFolder.Location = new System.Drawing.Point(618, 26);
 			this.btnOpenFolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.btnOpenFolder.Name = "btnOpenFolder";
 			this.btnOpenFolder.Size = new System.Drawing.Size(139, 25);
@@ -176,18 +173,18 @@ namespace EasyTreeView
 			this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.txtName.Multiline = true;
 			this.txtName.Name = "txtName";
-			this.txtName.Size = new System.Drawing.Size(585, 20);
+			this.txtName.Size = new System.Drawing.Size(470, 20);
 			this.txtName.TabIndex = 4;
 			// 
 			// label1
 			// 
 			this.label1.AutoSize = true;
-			this.label1.Location = new System.Drawing.Point(71, 34);
+			this.label1.Location = new System.Drawing.Point(10, 34);
 			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label1.Name = "label1";
-			this.label1.Size = new System.Drawing.Size(53, 17);
+			this.label1.Size = new System.Drawing.Size(119, 17);
 			this.label1.TabIndex = 0;
-			this.label1.Text = "Name :";
+			this.label1.Text = "Target Directory :";
 			// 
 			// ProcessResult
 			// 
@@ -200,7 +197,7 @@ namespace EasyTreeView
 			// 
 			// btnClose
 			// 
-			this.btnClose.Location = new System.Drawing.Point(632, 761);
+			this.btnClose.Location = new System.Drawing.Point(674, 60);
 			this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.btnClose.Name = "btnClose";
 			this.btnClose.Size = new System.Drawing.Size(280, 46);
@@ -209,19 +206,20 @@ namespace EasyTreeView
 			this.btnClose.UseVisualStyleBackColor = true;
 			this.btnClose.Click += new System.EventHandler(this.close_Click);
 			// 
-			// generateLoggerButton
+			// RevertAllBtn
 			// 
-			this.generateLoggerButton.Location = new System.Drawing.Point(325, 761);
-			this.generateLoggerButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			this.generateLoggerButton.Name = "generateLoggerButton";
-			this.generateLoggerButton.Size = new System.Drawing.Size(280, 46);
-			this.generateLoggerButton.TabIndex = 4;
-			this.generateLoggerButton.Text = "Logger Generator";
-			this.generateLoggerButton.UseVisualStyleBackColor = true;
+			this.RevertAllBtn.Location = new System.Drawing.Point(367, 60);
+			this.RevertAllBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.RevertAllBtn.Name = "RevertAllBtn";
+			this.RevertAllBtn.Size = new System.Drawing.Size(280, 46);
+			this.RevertAllBtn.TabIndex = 4;
+			this.RevertAllBtn.Text = "Revert All Changes";
+			this.RevertAllBtn.UseVisualStyleBackColor = true;
+			this.RevertAllBtn.Click += new System.EventHandler(this.revertAllButton_Click);
 			// 
 			// CodeAnalysisButton
 			// 
-			this.CodeAnalysisButton.Location = new System.Drawing.Point(16, 761);
+			this.CodeAnalysisButton.Location = new System.Drawing.Point(0, 60);
 			this.CodeAnalysisButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.CodeAnalysisButton.Name = "CodeAnalysisButton";
 			this.CodeAnalysisButton.Size = new System.Drawing.Size(280, 46);
@@ -233,19 +231,22 @@ namespace EasyTreeView
 			// gbxSearchByText
 			// 
 			this.gbxSearchByText.Controls.Add(this.btnNodeTextSearch);
+			this.gbxSearchByText.Controls.Add(this.btnClose);
 			this.gbxSearchByText.Controls.Add(this.txtNodeTextSearch);
+			this.gbxSearchByText.Controls.Add(this.RevertAllBtn);
 			this.gbxSearchByText.Controls.Add(this.label3);
+			this.gbxSearchByText.Controls.Add(this.CodeAnalysisButton);
 			this.gbxSearchByText.Location = new System.Drawing.Point(16, 677);
 			this.gbxSearchByText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.gbxSearchByText.Name = "gbxSearchByText";
 			this.gbxSearchByText.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			this.gbxSearchByText.Size = new System.Drawing.Size(896, 58);
+			this.gbxSearchByText.Size = new System.Drawing.Size(962, 114);
 			this.gbxSearchByText.TabIndex = 2;
 			this.gbxSearchByText.TabStop = false;
 			// 
 			// btnNodeTextSearch
 			// 
-			this.btnNodeTextSearch.Location = new System.Drawing.Point(733, 17);
+			this.btnNodeTextSearch.Location = new System.Drawing.Point(618, 19);
 			this.btnNodeTextSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.btnNodeTextSearch.Name = "btnNodeTextSearch";
 			this.btnNodeTextSearch.Size = new System.Drawing.Size(139, 28);
@@ -256,21 +257,21 @@ namespace EasyTreeView
 			// 
 			// txtNodeTextSearch
 			// 
-			this.txtNodeTextSearch.Location = new System.Drawing.Point(139, 20);
+			this.txtNodeTextSearch.Location = new System.Drawing.Point(168, 22);
 			this.txtNodeTextSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.txtNodeTextSearch.Name = "txtNodeTextSearch";
-			this.txtNodeTextSearch.Size = new System.Drawing.Size(585, 22);
+			this.txtNodeTextSearch.Size = new System.Drawing.Size(437, 22);
 			this.txtNodeTextSearch.TabIndex = 6;
 			// 
 			// label3
 			// 
 			this.label3.AutoSize = true;
-			this.label3.Location = new System.Drawing.Point(80, 23);
+			this.label3.Location = new System.Drawing.Point(8, 25);
 			this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
 			this.label3.Name = "label3";
-			this.label3.Size = new System.Drawing.Size(39, 17);
+			this.label3.Size = new System.Drawing.Size(156, 17);
 			this.label3.TabIndex = 5;
-			this.label3.Text = "Text:";
+			this.label3.Text = "Function Name Search:";
 			// 
 			// treeView1
 			// 
@@ -279,7 +280,7 @@ namespace EasyTreeView
 			this.treeView1.Location = new System.Drawing.Point(16, 26);
 			this.treeView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.treeView1.Name = "treeView1";
-			this.treeView1.Size = new System.Drawing.Size(891, 643);
+			this.treeView1.Size = new System.Drawing.Size(962, 643);
 			this.treeView1.TabIndex = 0;
 			this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
 			this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
@@ -312,7 +313,7 @@ namespace EasyTreeView
 			// 
 			this.panel1.Controls.Add(this.cbOutputDebugView);
 			this.panel1.Controls.Add(this.cbOutputLog);
-			this.panel1.Location = new System.Drawing.Point(891, 26);
+			this.panel1.Location = new System.Drawing.Point(764, 22);
 			this.panel1.Name = "panel1";
 			this.panel1.Size = new System.Drawing.Size(198, 71);
 			this.panel1.TabIndex = 11;
@@ -321,7 +322,7 @@ namespace EasyTreeView
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(1130, 996);
+			this.ClientSize = new System.Drawing.Size(1006, 996);
 			this.Controls.Add(this.splitContainer1);
 			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
 			this.Name = "Form1";
@@ -357,7 +358,7 @@ namespace EasyTreeView
         private System.Windows.Forms.TextBox txtNodeTextSearch;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnClose;
-        private System.Windows.Forms.Button generateLoggerButton;
+        private System.Windows.Forms.Button RevertAllBtn;
         private System.Windows.Forms.Button CodeAnalysisButton;
         private System.Windows.Forms.Button btnOpenFolder;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog;

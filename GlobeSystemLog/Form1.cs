@@ -529,5 +529,10 @@ namespace EasyTreeView
         {
             oPath.EnableOutputDebugView = cbOutputDebugView.Checked;
         }
-    }
+
+		private void revertAllButton_Click(object sender, EventArgs e)
+		{
+
+		}
+	}
 }
