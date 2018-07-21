@@ -355,7 +355,6 @@ namespace GlobeSystemLog
 		public static int Initialize(string sourceFolder)
 		{
 			string tempFolder = Path.Combine(sourceFolder, "temp");
-			string GLBSysLogFile = Path.Combine(Directory.GetCurrentDirectory(), "GLBSysLog.bas");
 
 			// create temp folder if not exist, 
 			//otherwise delete the previous temp folder
@@ -378,8 +377,6 @@ namespace GlobeSystemLog
 			// make sure temp folder is exist
 			if (!Directory.Exists(tempFolder))
 				return (int)SystemLogStatusCode.FolderIsNotCreatedError;
-
-			File.Copy(GLBSysLogFile, Path.Combine(tempFolder, "GLBSysLog.bas"), true);
 
 			// only one *.vbp file in each Target folder
 			string[] files = Directory.GetFiles(sourceFolder, "*.vbp");

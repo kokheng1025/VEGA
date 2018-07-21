@@ -249,10 +249,6 @@ namespace EasyTreeView
         }
 
         #endregion  
-        private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
 
         private void searchListOfFunctions(TreeNode n, string fileName)
         {
@@ -378,7 +374,6 @@ namespace EasyTreeView
 
         private void GetTreeView(string folderPath)
         {
-
             this.folderBrowserDialog.RootFolder = System.Environment.SpecialFolder.MyComputer;
             this.folderBrowserDialog.ShowNewFolderButton = false;
 
@@ -470,9 +465,7 @@ namespace EasyTreeView
 		private void executeButton_Click(object sender, EventArgs e)
 		{
 			if (SaveSettings() == false)
-			{
 				return;
-			}
 
 			// Create GLBSysLog.bas file
 			oSettings.WriteVBLoggerFile();
@@ -517,7 +510,6 @@ namespace EasyTreeView
 			}
 		}
 
-
 		private void btnLogFile_Click(object sender, EventArgs e)
 		{
 			txtFilename.Text = "";
@@ -543,6 +535,10 @@ namespace EasyTreeView
         }
 
 		private void revertAllButton_Click(object sender, EventArgs e)
+		{
+
+		}
+		private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
 		{
 
 		}
