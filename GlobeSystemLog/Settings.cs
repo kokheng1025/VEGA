@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 using System.IO;
 using System.Diagnostics;
 using Newtonsoft.Json;
+using System.Collections;
+using System.Windows.Forms;
 
 namespace GlobeSystemLog
 {
-    class Settings
+	class Settings
     {
         PathSettings oPath = new PathSettings();
 		public string[] FileExtensionList = { "*.frm", "*.cls", "*.bas" };
@@ -131,5 +133,25 @@ namespace GlobeSystemLog
             EnableOutputLog = false;
         }
     }
+
+	class nodeObjectArrayList : IComparer
+	{
+		public int Compare(object a, object b)
+		{
+			int lNameCmp;
+			int fNameCmp;
+
+			TreeNode pNodeA = (TreeNode)a;
+			TreeNode pNodeB = (TreeNode)b;
+
+			lNameCmp = String.Compare(pNodeA.Text, pNodeB.Text);
+			if (lNameCmp != 0) return lNameCmp;
+
+			fNameCmp = String.Compare(pNodeA.Text, pNodeB.Text);
+
+			return fNameCmp;
+		}
+	}
+
 }
 

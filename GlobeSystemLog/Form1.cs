@@ -364,6 +364,9 @@ namespace EasyTreeView
 			// close stream before exit
 			Reader.Close();
 
+			IComparer myComparer = new nodeObjectArrayList();
+			nodeArrayList.Sort(myComparer);
+
 			return nodeArrayList;
 		}
 
@@ -435,11 +438,20 @@ namespace EasyTreeView
 			
 			int directoryCount = Directory.GetDirectories(folderPath).Length;
 
-			// No Sub directory
-			if (directoryCount == 0)				
+			
+			if (directoryCount == 0) // No Sub directory
 			{				
 				GetSingleFolderTreeView(folderPath);
 				return;
+			}
+			else if (directoryCount == 1) // if only temp folder
+			{
+				DirectoryInfo subfolder = new DirectoryInfo(Directory.GetDirectories(folderPath)[0]);
+				if (subfolder.Name == "temp")
+				{
+					GetSingleFolderTreeView(folderPath);
+					return;
+				}
 			}
 
 			// list all sub directory and save into treeNodesArray
