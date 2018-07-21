@@ -494,15 +494,6 @@ namespace EasyTreeView
 			}
 		}
 
-		private void btnOpenFolder_Click(object sender, EventArgs e)
-		{
-			DialogResult result = this.folderBrowserDialog.ShowDialog();
-			if (result == DialogResult.OK)
-			{
-				GetTreeView(this.folderBrowserDialog.SelectedPath);
-			}
-		}
-
 		private void executeButton_Click(object sender, EventArgs e)
 		{
 			if (SaveSettings() == false)
@@ -560,6 +551,20 @@ namespace EasyTreeView
 			txtFilename.Text = string.Format("{0}\\{1}", this.folderBrowserDialog.SelectedPath, Path.GetFileName(oPath.LogFilename));
 		}
 
+		private void btnOpenFolder_Click(object sender, EventArgs e)
+		{
+			DialogResult result = this.folderBrowserDialog.ShowDialog();
+			if (result == DialogResult.OK)
+			{
+				//oPath.TargetFolder = this.folderBrowserDialog.SelectedPath;
+
+				txtName.Text = this.folderBrowserDialog.SelectedPath;
+
+				SaveSettings();
+				GetTreeView(this.folderBrowserDialog.SelectedPath);
+			}
+		}
+
 		private void close_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -577,6 +582,34 @@ namespace EasyTreeView
 
 		private void revertAllButton_Click(object sender, EventArgs e)
 		{
+			if (!Directory.Exists(oPath.TargetFolder))
+			{
+				MessageBox.Show("Target Folder field cannot be empty");
+				return;
+			}
+			
+			string tempFolder = Path.Combine(oPath.TargetFolder, "temp");
+			if (Directory.Exists(tempFolder))
+			{
+				foreach (string ext in oSettings.FileExtensionList)
+				{
+					string[] files = Directory.GetFiles(tempFolder, ext + "__");
+					foreach (string fileName in files)
+					{
+						File.Delete(fileName);
+					}
+				}
+
+				foreach (string ext in oSettings.FileExtensionList)
+				{
+					string[] files = Directory.GetFiles(tempFolder, ext);
+					foreach (string fileName in files)
+					{
+						string eachfileName = Path.GetFileName(fileName);
+						File.Copy(fileName, Path.Combine(oPath.TargetFolder, eachfileName), true);
+					}
+				}
+			}
 
 		}
 		private void splitContainer1_Panel1_Paint(object sender, PaintEventArgs e)
