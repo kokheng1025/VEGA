@@ -404,7 +404,7 @@ namespace EasyTreeView
 
 			int i = 0;
 			int totalFileCount = 0; 
-			string[] fileExts = { "*.frm", "*.cls" };
+			///string[] fileExts = { "*.frm", "*.cls" };
 
 			foreach (string strDir in Directory.GetDirectories(folderPath))
 			{
@@ -413,7 +413,7 @@ namespace EasyTreeView
 				DirectoryInfo subfolder = new DirectoryInfo(strDir);
 
 				// iterate over all files in the subfolder and add them into treeNodesArrayforFiles
-				foreach (string ext in fileExts)
+				foreach (string ext in oSettings.FileExtensionList)
 				{
 					try
 					{
@@ -429,7 +429,7 @@ namespace EasyTreeView
 
 				TreeNode[] treeNodesArrayforFiles = new TreeNode[fileCount];
 
-				foreach (string ext in fileExts)
+				foreach (string ext in oSettings.FileExtensionList)
 				{
 					string[] files = Directory.GetFiles(strDir, ext);
 					foreach (string fileName in files)

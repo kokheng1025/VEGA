@@ -12,8 +12,9 @@ namespace GlobeSystemLog
     class Settings
     {
         PathSettings oPath = new PathSettings();
+		public string[] FileExtensionList = { "*.frm", "*.cls", "*.bas" };
 
-        public Settings()
+		public Settings()
         {
         }
 
