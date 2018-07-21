@@ -28,281 +28,317 @@ namespace EasyTreeView
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.gbxNodeInfo = new System.Windows.Forms.GroupBox();
-            this.lblFilename = new System.Windows.Forms.Label();
-            this.btnFilename = new System.Windows.Forms.Button();
-            this.txtFilename = new System.Windows.Forms.TextBox();
-            this.btnOpenFolder = new System.Windows.Forms.Button();
-            this.txtName = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.ProcessResult = new System.Windows.Forms.Label();
-            this.btnClose = new System.Windows.Forms.Button();
-            this.generateLoggerButton = new System.Windows.Forms.Button();
-            this.CodeAnalysisButton = new System.Windows.Forms.Button();
-            this.gbxSearchByText = new System.Windows.Forms.GroupBox();
-            this.btnNodeTextSearch = new System.Windows.Forms.Button();
-            this.txtNodeTextSearch = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.treeView1 = new System.Windows.Forms.TreeView();
-            this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
-            this.cmnuAddNode = new System.Windows.Forms.ToolStripMenuItem();
-            this.cmnuRemoveNode = new System.Windows.Forms.ToolStripMenuItem();
-            this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-            this.cbOutputLog = new System.Windows.Forms.CheckBox();
-            this.cbOutputDebugView = new System.Windows.Forms.CheckBox();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
-            this.splitContainer1.Panel1.SuspendLayout();
-            this.splitContainer1.Panel2.SuspendLayout();
-            this.splitContainer1.SuspendLayout();
-            this.gbxNodeInfo.SuspendLayout();
-            this.gbxSearchByText.SuspendLayout();
-            this.contextMenuStrip1.SuspendLayout();
-            this.SuspendLayout();
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.gbxNodeInfo);
-            this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.ProcessResult);
-            this.splitContainer1.Panel2.Controls.Add(this.btnClose);
-            this.splitContainer1.Panel2.Controls.Add(this.generateLoggerButton);
-            this.splitContainer1.Panel2.Controls.Add(this.CodeAnalysisButton);
-            this.splitContainer1.Panel2.Controls.Add(this.gbxSearchByText);
-            this.splitContainer1.Panel2.Controls.Add(this.treeView1);
-            this.splitContainer1.Size = new System.Drawing.Size(893, 809);
-            this.splitContainer1.SplitterDistance = 129;
-            this.splitContainer1.TabIndex = 0;
-            // 
-            // gbxNodeInfo
-            // 
-            this.gbxNodeInfo.Controls.Add(this.cbOutputDebugView);
-            this.gbxNodeInfo.Controls.Add(this.cbOutputLog);
-            this.gbxNodeInfo.Controls.Add(this.lblFilename);
-            this.gbxNodeInfo.Controls.Add(this.btnFilename);
-            this.gbxNodeInfo.Controls.Add(this.txtFilename);
-            this.gbxNodeInfo.Controls.Add(this.btnOpenFolder);
-            this.gbxNodeInfo.Controls.Add(this.txtName);
-            this.gbxNodeInfo.Controls.Add(this.label1);
-            this.gbxNodeInfo.Location = new System.Drawing.Point(12, 12);
-            this.gbxNodeInfo.Name = "gbxNodeInfo";
-            this.gbxNodeInfo.Size = new System.Drawing.Size(870, 112);
-            this.gbxNodeInfo.TabIndex = 0;
-            this.gbxNodeInfo.TabStop = false;
-            this.gbxNodeInfo.Text = "Select Globe Target";
-            // 
-            // lblFilename
-            // 
-            this.lblFilename.AutoSize = true;
-            this.lblFilename.Location = new System.Drawing.Point(19, 74);
-            this.lblFilename.Name = "lblFilename";
-            this.lblFilename.Size = new System.Drawing.Size(76, 13);
-            this.lblFilename.TabIndex = 8;
-            this.lblFilename.Text = "Log Filename :";
-            // 
-            // btnFilename
-            // 
-            this.btnFilename.Location = new System.Drawing.Point(547, 69);
-            this.btnFilename.Name = "btnFilename";
-            this.btnFilename.Size = new System.Drawing.Size(104, 22);
-            this.btnFilename.TabIndex = 7;
-            this.btnFilename.Text = "Change";
-            this.btnFilename.UseVisualStyleBackColor = true;
-            this.btnFilename.Click += new System.EventHandler(this.btnLogFile_Click);
-            // 
-            // txtFilename
-            // 
-            this.txtFilename.Location = new System.Drawing.Point(101, 71);
-            this.txtFilename.Name = "txtFilename";
-            this.txtFilename.Size = new System.Drawing.Size(440, 20);
-            this.txtFilename.TabIndex = 6;
-            // 
-            // btnOpenFolder
-            // 
-            this.btnOpenFolder.Location = new System.Drawing.Point(547, 23);
-            this.btnOpenFolder.Name = "btnOpenFolder";
-            this.btnOpenFolder.Size = new System.Drawing.Size(104, 22);
-            this.btnOpenFolder.TabIndex = 5;
-            this.btnOpenFolder.Text = "Open";
-            this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
-            // 
-            // txtName
-            // 
-            this.txtName.Location = new System.Drawing.Point(101, 25);
-            this.txtName.Name = "txtName";
-            this.txtName.Size = new System.Drawing.Size(440, 20);
-            this.txtName.TabIndex = 4;
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(53, 28);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(38, 13);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Name:";
-            // 
-            // ProcessResult
-            // 
-            this.ProcessResult.AutoSize = true;
-            this.ProcessResult.Location = new System.Drawing.Point(28, 5);
-            this.ProcessResult.Name = "ProcessResult";
-            this.ProcessResult.Size = new System.Drawing.Size(0, 13);
-            this.ProcessResult.TabIndex = 1;
-            // 
-            // btnClose
-            // 
-            this.btnClose.Location = new System.Drawing.Point(474, 618);
-            this.btnClose.Name = "btnClose";
-            this.btnClose.Size = new System.Drawing.Size(210, 37);
-            this.btnClose.TabIndex = 5;
-            this.btnClose.Text = "Close";
-            this.btnClose.UseVisualStyleBackColor = true;
-            this.btnClose.Click += new System.EventHandler(this.close_Click);
-            // 
-            // generateLoggerButton
-            // 
-            this.generateLoggerButton.Location = new System.Drawing.Point(244, 618);
-            this.generateLoggerButton.Name = "generateLoggerButton";
-            this.generateLoggerButton.Size = new System.Drawing.Size(210, 37);
-            this.generateLoggerButton.TabIndex = 4;
-            this.generateLoggerButton.Text = "Logger Generator";
-            this.generateLoggerButton.UseVisualStyleBackColor = true;
-            // 
-            // CodeAnalysisButton
-            // 
-            this.CodeAnalysisButton.Location = new System.Drawing.Point(12, 618);
-            this.CodeAnalysisButton.Name = "CodeAnalysisButton";
-            this.CodeAnalysisButton.Size = new System.Drawing.Size(210, 37);
-            this.CodeAnalysisButton.TabIndex = 3;
-            this.CodeAnalysisButton.Text = "Code Analysis";
-            this.CodeAnalysisButton.UseVisualStyleBackColor = true;
-            this.CodeAnalysisButton.Click += new System.EventHandler(this.codeAnalysisButton_Click);
-            // 
-            // gbxSearchByText
-            // 
-            this.gbxSearchByText.Controls.Add(this.btnNodeTextSearch);
-            this.gbxSearchByText.Controls.Add(this.txtNodeTextSearch);
-            this.gbxSearchByText.Controls.Add(this.label3);
-            this.gbxSearchByText.Location = new System.Drawing.Point(12, 550);
-            this.gbxSearchByText.Name = "gbxSearchByText";
-            this.gbxSearchByText.Size = new System.Drawing.Size(672, 47);
-            this.gbxSearchByText.TabIndex = 2;
-            this.gbxSearchByText.TabStop = false;
-            // 
-            // btnNodeTextSearch
-            // 
-            this.btnNodeTextSearch.Location = new System.Drawing.Point(550, 14);
-            this.btnNodeTextSearch.Name = "btnNodeTextSearch";
-            this.btnNodeTextSearch.Size = new System.Drawing.Size(104, 23);
-            this.btnNodeTextSearch.TabIndex = 7;
-            this.btnNodeTextSearch.Text = "Find";
-            this.btnNodeTextSearch.UseVisualStyleBackColor = true;
-            this.btnNodeTextSearch.Click += new System.EventHandler(this.btnNodeTextSearch_Click);
-            // 
-            // txtNodeTextSearch
-            // 
-            this.txtNodeTextSearch.Location = new System.Drawing.Point(104, 16);
-            this.txtNodeTextSearch.Name = "txtNodeTextSearch";
-            this.txtNodeTextSearch.Size = new System.Drawing.Size(440, 20);
-            this.txtNodeTextSearch.TabIndex = 6;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(60, 19);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(31, 13);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Text:";
-            // 
-            // treeView1
-            // 
-            this.treeView1.CheckBoxes = true;
-            this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
-            this.treeView1.Location = new System.Drawing.Point(12, 21);
-            this.treeView1.Name = "treeView1";
-            this.treeView1.Size = new System.Drawing.Size(669, 523);
-            this.treeView1.TabIndex = 0;
-            this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
-            this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
-            this.treeView1.Click += new System.EventHandler(this.treeView1_Click);
-            // 
-            // contextMenuStrip1
-            // 
-            this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
-            this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+			this.components = new System.ComponentModel.Container();
+			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+			this.gbxNodeInfo = new System.Windows.Forms.GroupBox();
+			this.cbOutputDebugView = new System.Windows.Forms.CheckBox();
+			this.cbOutputLog = new System.Windows.Forms.CheckBox();
+			this.lblFilename = new System.Windows.Forms.Label();
+			this.btnFilename = new System.Windows.Forms.Button();
+			this.txtFilename = new System.Windows.Forms.TextBox();
+			this.btnOpenFolder = new System.Windows.Forms.Button();
+			this.txtName = new System.Windows.Forms.TextBox();
+			this.label1 = new System.Windows.Forms.Label();
+			this.ProcessResult = new System.Windows.Forms.Label();
+			this.btnClose = new System.Windows.Forms.Button();
+			this.generateLoggerButton = new System.Windows.Forms.Button();
+			this.CodeAnalysisButton = new System.Windows.Forms.Button();
+			this.gbxSearchByText = new System.Windows.Forms.GroupBox();
+			this.btnNodeTextSearch = new System.Windows.Forms.Button();
+			this.txtNodeTextSearch = new System.Windows.Forms.TextBox();
+			this.label3 = new System.Windows.Forms.Label();
+			this.treeView1 = new System.Windows.Forms.TreeView();
+			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
+			this.cmnuAddNode = new System.Windows.Forms.ToolStripMenuItem();
+			this.cmnuRemoveNode = new System.Windows.Forms.ToolStripMenuItem();
+			this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
+			this.panel1 = new System.Windows.Forms.Panel();
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
+			this.splitContainer1.Panel1.SuspendLayout();
+			this.splitContainer1.Panel2.SuspendLayout();
+			this.splitContainer1.SuspendLayout();
+			this.gbxNodeInfo.SuspendLayout();
+			this.gbxSearchByText.SuspendLayout();
+			this.contextMenuStrip1.SuspendLayout();
+			this.panel1.SuspendLayout();
+			this.SuspendLayout();
+			// 
+			// splitContainer1
+			// 
+			this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+			this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+			this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.splitContainer1.Name = "splitContainer1";
+			this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+			// 
+			// splitContainer1.Panel1
+			// 
+			this.splitContainer1.Panel1.Controls.Add(this.gbxNodeInfo);
+			this.splitContainer1.Panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.splitContainer1_Panel1_Paint);
+			// 
+			// splitContainer1.Panel2
+			// 
+			this.splitContainer1.Panel2.Controls.Add(this.ProcessResult);
+			this.splitContainer1.Panel2.Controls.Add(this.btnClose);
+			this.splitContainer1.Panel2.Controls.Add(this.generateLoggerButton);
+			this.splitContainer1.Panel2.Controls.Add(this.CodeAnalysisButton);
+			this.splitContainer1.Panel2.Controls.Add(this.gbxSearchByText);
+			this.splitContainer1.Panel2.Controls.Add(this.treeView1);
+			this.splitContainer1.Size = new System.Drawing.Size(1130, 996);
+			this.splitContainer1.SplitterDistance = 126;
+			this.splitContainer1.SplitterWidth = 5;
+			this.splitContainer1.TabIndex = 0;
+			// 
+			// gbxNodeInfo
+			// 
+			this.gbxNodeInfo.Controls.Add(this.panel1);
+			this.gbxNodeInfo.Controls.Add(this.lblFilename);
+			this.gbxNodeInfo.Controls.Add(this.btnFilename);
+			this.gbxNodeInfo.Controls.Add(this.txtFilename);
+			this.gbxNodeInfo.Controls.Add(this.btnOpenFolder);
+			this.gbxNodeInfo.Controls.Add(this.txtName);
+			this.gbxNodeInfo.Controls.Add(this.label1);
+			this.gbxNodeInfo.Location = new System.Drawing.Point(16, 15);
+			this.gbxNodeInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.gbxNodeInfo.Name = "gbxNodeInfo";
+			this.gbxNodeInfo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.gbxNodeInfo.Size = new System.Drawing.Size(1103, 106);
+			this.gbxNodeInfo.TabIndex = 0;
+			this.gbxNodeInfo.TabStop = false;
+			this.gbxNodeInfo.Text = "Select Globe Target";
+			// 
+			// cbOutputDebugView
+			// 
+			this.cbOutputDebugView.AutoSize = true;
+			this.cbOutputDebugView.Location = new System.Drawing.Point(17, 30);
+			this.cbOutputDebugView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.cbOutputDebugView.Name = "cbOutputDebugView";
+			this.cbOutputDebugView.Size = new System.Drawing.Size(164, 21);
+			this.cbOutputDebugView.TabIndex = 10;
+			this.cbOutputDebugView.Text = "Output to DebugView";
+			this.cbOutputDebugView.UseVisualStyleBackColor = true;
+			this.cbOutputDebugView.CheckedChanged += new System.EventHandler(this.cbOutputDebugView_CheckedChanged);
+			// 
+			// cbOutputLog
+			// 
+			this.cbOutputLog.AutoSize = true;
+			this.cbOutputLog.Location = new System.Drawing.Point(17, 4);
+			this.cbOutputLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.cbOutputLog.Name = "cbOutputLog";
+			this.cbOutputLog.Size = new System.Drawing.Size(135, 21);
+			this.cbOutputLog.TabIndex = 9;
+			this.cbOutputLog.Text = "Output to Logfile";
+			this.cbOutputLog.UseVisualStyleBackColor = true;
+			this.cbOutputLog.CheckedChanged += new System.EventHandler(this.cbOutputLog_CheckedChanged);
+			// 
+			// lblFilename
+			// 
+			this.lblFilename.AutoSize = true;
+			this.lblFilename.Location = new System.Drawing.Point(19, 60);
+			this.lblFilename.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.lblFilename.Name = "lblFilename";
+			this.lblFilename.Size = new System.Drawing.Size(101, 17);
+			this.lblFilename.TabIndex = 8;
+			this.lblFilename.Text = "Log Filename :";
+			// 
+			// btnFilename
+			// 
+			this.btnFilename.Location = new System.Drawing.Point(728, 57);
+			this.btnFilename.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnFilename.Name = "btnFilename";
+			this.btnFilename.Size = new System.Drawing.Size(139, 25);
+			this.btnFilename.TabIndex = 7;
+			this.btnFilename.Text = "Change";
+			this.btnFilename.UseVisualStyleBackColor = true;
+			this.btnFilename.Click += new System.EventHandler(this.btnLogFile_Click);
+			// 
+			// txtFilename
+			// 
+			this.txtFilename.Location = new System.Drawing.Point(135, 60);
+			this.txtFilename.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtFilename.Name = "txtFilename";
+			this.txtFilename.Size = new System.Drawing.Size(585, 22);
+			this.txtFilename.TabIndex = 6;
+			// 
+			// btnOpenFolder
+			// 
+			this.btnOpenFolder.Location = new System.Drawing.Point(728, 26);
+			this.btnOpenFolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnOpenFolder.Name = "btnOpenFolder";
+			this.btnOpenFolder.Size = new System.Drawing.Size(139, 25);
+			this.btnOpenFolder.TabIndex = 5;
+			this.btnOpenFolder.Text = "Open";
+			this.btnOpenFolder.Click += new System.EventHandler(this.btnOpenFolder_Click);
+			// 
+			// txtName
+			// 
+			this.txtName.Location = new System.Drawing.Point(135, 31);
+			this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtName.Multiline = true;
+			this.txtName.Name = "txtName";
+			this.txtName.Size = new System.Drawing.Size(585, 20);
+			this.txtName.TabIndex = 4;
+			// 
+			// label1
+			// 
+			this.label1.AutoSize = true;
+			this.label1.Location = new System.Drawing.Point(71, 34);
+			this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label1.Name = "label1";
+			this.label1.Size = new System.Drawing.Size(53, 17);
+			this.label1.TabIndex = 0;
+			this.label1.Text = "Name :";
+			// 
+			// ProcessResult
+			// 
+			this.ProcessResult.AutoSize = true;
+			this.ProcessResult.Location = new System.Drawing.Point(37, 6);
+			this.ProcessResult.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.ProcessResult.Name = "ProcessResult";
+			this.ProcessResult.Size = new System.Drawing.Size(0, 17);
+			this.ProcessResult.TabIndex = 1;
+			// 
+			// btnClose
+			// 
+			this.btnClose.Location = new System.Drawing.Point(632, 761);
+			this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnClose.Name = "btnClose";
+			this.btnClose.Size = new System.Drawing.Size(280, 46);
+			this.btnClose.TabIndex = 5;
+			this.btnClose.Text = "Close";
+			this.btnClose.UseVisualStyleBackColor = true;
+			this.btnClose.Click += new System.EventHandler(this.close_Click);
+			// 
+			// generateLoggerButton
+			// 
+			this.generateLoggerButton.Location = new System.Drawing.Point(325, 761);
+			this.generateLoggerButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.generateLoggerButton.Name = "generateLoggerButton";
+			this.generateLoggerButton.Size = new System.Drawing.Size(280, 46);
+			this.generateLoggerButton.TabIndex = 4;
+			this.generateLoggerButton.Text = "Logger Generator";
+			this.generateLoggerButton.UseVisualStyleBackColor = true;
+			// 
+			// CodeAnalysisButton
+			// 
+			this.CodeAnalysisButton.Location = new System.Drawing.Point(16, 761);
+			this.CodeAnalysisButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.CodeAnalysisButton.Name = "CodeAnalysisButton";
+			this.CodeAnalysisButton.Size = new System.Drawing.Size(280, 46);
+			this.CodeAnalysisButton.TabIndex = 3;
+			this.CodeAnalysisButton.Text = "Code Analysis";
+			this.CodeAnalysisButton.UseVisualStyleBackColor = true;
+			this.CodeAnalysisButton.Click += new System.EventHandler(this.codeAnalysisButton_Click);
+			// 
+			// gbxSearchByText
+			// 
+			this.gbxSearchByText.Controls.Add(this.btnNodeTextSearch);
+			this.gbxSearchByText.Controls.Add(this.txtNodeTextSearch);
+			this.gbxSearchByText.Controls.Add(this.label3);
+			this.gbxSearchByText.Location = new System.Drawing.Point(16, 677);
+			this.gbxSearchByText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.gbxSearchByText.Name = "gbxSearchByText";
+			this.gbxSearchByText.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.gbxSearchByText.Size = new System.Drawing.Size(896, 58);
+			this.gbxSearchByText.TabIndex = 2;
+			this.gbxSearchByText.TabStop = false;
+			// 
+			// btnNodeTextSearch
+			// 
+			this.btnNodeTextSearch.Location = new System.Drawing.Point(733, 17);
+			this.btnNodeTextSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnNodeTextSearch.Name = "btnNodeTextSearch";
+			this.btnNodeTextSearch.Size = new System.Drawing.Size(139, 28);
+			this.btnNodeTextSearch.TabIndex = 7;
+			this.btnNodeTextSearch.Text = "Find";
+			this.btnNodeTextSearch.UseVisualStyleBackColor = true;
+			this.btnNodeTextSearch.Click += new System.EventHandler(this.btnNodeTextSearch_Click);
+			// 
+			// txtNodeTextSearch
+			// 
+			this.txtNodeTextSearch.Location = new System.Drawing.Point(139, 20);
+			this.txtNodeTextSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtNodeTextSearch.Name = "txtNodeTextSearch";
+			this.txtNodeTextSearch.Size = new System.Drawing.Size(585, 22);
+			this.txtNodeTextSearch.TabIndex = 6;
+			// 
+			// label3
+			// 
+			this.label3.AutoSize = true;
+			this.label3.Location = new System.Drawing.Point(80, 23);
+			this.label3.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+			this.label3.Name = "label3";
+			this.label3.Size = new System.Drawing.Size(39, 17);
+			this.label3.TabIndex = 5;
+			this.label3.Text = "Text:";
+			// 
+			// treeView1
+			// 
+			this.treeView1.CheckBoxes = true;
+			this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
+			this.treeView1.Location = new System.Drawing.Point(16, 26);
+			this.treeView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.treeView1.Name = "treeView1";
+			this.treeView1.Size = new System.Drawing.Size(891, 643);
+			this.treeView1.TabIndex = 0;
+			this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
+			this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
+			this.treeView1.Click += new System.EventHandler(this.treeView1_Click);
+			// 
+			// contextMenuStrip1
+			// 
+			this.contextMenuStrip1.ImageScalingSize = new System.Drawing.Size(18, 18);
+			this.contextMenuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.cmnuAddNode,
             this.cmnuRemoveNode});
-            this.contextMenuStrip1.Name = "contextMenuStrip1";
-            this.contextMenuStrip1.Size = new System.Drawing.Size(150, 48);
-            // 
-            // cmnuAddNode
-            // 
-            this.cmnuAddNode.Name = "cmnuAddNode";
-            this.cmnuAddNode.Size = new System.Drawing.Size(149, 22);
-            this.cmnuAddNode.Text = "Add Node";
-            this.cmnuAddNode.Click += new System.EventHandler(this.cmnuAddNode_Click);
-            // 
-            // cmnuRemoveNode
-            // 
-            this.cmnuRemoveNode.Name = "cmnuRemoveNode";
-            this.cmnuRemoveNode.Size = new System.Drawing.Size(149, 22);
-            this.cmnuRemoveNode.Text = "Remove Node";
-            this.cmnuRemoveNode.Click += new System.EventHandler(this.cmnuRemoveNode_Click);
-            // 
-            // cbOutputLog
-            // 
-            this.cbOutputLog.AutoSize = true;
-            this.cbOutputLog.Location = new System.Drawing.Point(704, 27);
-            this.cbOutputLog.Name = "cbOutputLog";
-            this.cbOutputLog.Size = new System.Drawing.Size(104, 17);
-            this.cbOutputLog.TabIndex = 9;
-            this.cbOutputLog.Text = "Output to Logfile";
-            this.cbOutputLog.UseVisualStyleBackColor = true;
-            this.cbOutputLog.CheckedChanged += new System.EventHandler(this.cbOutputLog_CheckedChanged);
-            // 
-            // cbOutputDebugView
-            // 
-            this.cbOutputDebugView.AutoSize = true;
-            this.cbOutputDebugView.Location = new System.Drawing.Point(704, 69);
-            this.cbOutputDebugView.Name = "cbOutputDebugView";
-            this.cbOutputDebugView.Size = new System.Drawing.Size(128, 17);
-            this.cbOutputDebugView.TabIndex = 10;
-            this.cbOutputDebugView.Text = "Output to DebugView";
-            this.cbOutputDebugView.UseVisualStyleBackColor = true;
-            this.cbOutputDebugView.CheckedChanged += new System.EventHandler(this.cbOutputDebugView_CheckedChanged);
-            // 
-            // Form1
-            // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(893, 809);
-            this.Controls.Add(this.splitContainer1);
-            this.Name = "Form1";
-            this.Text = "Globe System Logger";
-            this.splitContainer1.Panel1.ResumeLayout(false);
-            this.splitContainer1.Panel2.ResumeLayout(false);
-            this.splitContainer1.Panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
-            this.splitContainer1.ResumeLayout(false);
-            this.gbxNodeInfo.ResumeLayout(false);
-            this.gbxNodeInfo.PerformLayout();
-            this.gbxSearchByText.ResumeLayout(false);
-            this.gbxSearchByText.PerformLayout();
-            this.contextMenuStrip1.ResumeLayout(false);
-            this.ResumeLayout(false);
+			this.contextMenuStrip1.Name = "contextMenuStrip1";
+			this.contextMenuStrip1.Size = new System.Drawing.Size(174, 52);
+			// 
+			// cmnuAddNode
+			// 
+			this.cmnuAddNode.Name = "cmnuAddNode";
+			this.cmnuAddNode.Size = new System.Drawing.Size(173, 24);
+			this.cmnuAddNode.Text = "Add Node";
+			this.cmnuAddNode.Click += new System.EventHandler(this.cmnuAddNode_Click);
+			// 
+			// cmnuRemoveNode
+			// 
+			this.cmnuRemoveNode.Name = "cmnuRemoveNode";
+			this.cmnuRemoveNode.Size = new System.Drawing.Size(173, 24);
+			this.cmnuRemoveNode.Text = "Remove Node";
+			this.cmnuRemoveNode.Click += new System.EventHandler(this.cmnuRemoveNode_Click);
+			// 
+			// panel1
+			// 
+			this.panel1.Controls.Add(this.cbOutputDebugView);
+			this.panel1.Controls.Add(this.cbOutputLog);
+			this.panel1.Location = new System.Drawing.Point(891, 26);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(198, 71);
+			this.panel1.TabIndex = 11;
+			// 
+			// Form1
+			// 
+			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
+			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+			this.ClientSize = new System.Drawing.Size(1130, 996);
+			this.Controls.Add(this.splitContainer1);
+			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Name = "Form1";
+			this.Text = "Globe System Logger";
+			this.splitContainer1.Panel1.ResumeLayout(false);
+			this.splitContainer1.Panel2.ResumeLayout(false);
+			this.splitContainer1.Panel2.PerformLayout();
+			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
+			this.splitContainer1.ResumeLayout(false);
+			this.gbxNodeInfo.ResumeLayout(false);
+			this.gbxNodeInfo.PerformLayout();
+			this.gbxSearchByText.ResumeLayout(false);
+			this.gbxSearchByText.PerformLayout();
+			this.contextMenuStrip1.ResumeLayout(false);
+			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
+			this.ResumeLayout(false);
 
         }
 
@@ -331,6 +367,7 @@ namespace EasyTreeView
         private System.Windows.Forms.TextBox txtFilename;
         private System.Windows.Forms.CheckBox cbOutputDebugView;
         private System.Windows.Forms.CheckBox cbOutputLog;
-    }
+		private System.Windows.Forms.Panel panel1;
+	}
 }
 
