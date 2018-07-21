@@ -314,8 +314,8 @@ namespace EasyTreeView
 			DialogResult result = this.folderBrowserDialog.ShowDialog();
 			if (result == DialogResult.OK)
 			{
-                FolderPath = this.folderBrowserDialog.SelectedPath;
-                GetTreeView(FolderPath);
+				FolderPath = this.folderBrowserDialog.SelectedPath;
+				GetTreeView(FolderPath);
 			}
 		}
 
@@ -482,38 +482,67 @@ namespace EasyTreeView
             // print the folder name on a label
             this.txtName.Text = folderPath;
 
-            // iterate over all files in the selected folder and add them to 
-            // the treeview.
-            RootNode.Name = Path.GetFileName(folderPath);
-            RootNode.Text = Path.GetFileName(folderPath);
-            this.treeView1.Nodes.Add(RootNode);
-            this.treeView1.SelectedNode = RootNode;
+			// list all sub directory and save into treeNodesArray
+			int directoryCount = Directory.GetDirectories(folderPath).Length;
+			if (directoryCount == 0)
+			{
+				TreeNode node = new TreeNode(folderPath);
+				this.treeView1.Nodes.Add(node);
+				return;
+			}
 
-            //string[] fileExts = { "*.frm", "*.bas", "*.cls", "*.ctl" };
-            string[] fileExts = { "*.frm", "*.cls" };
-            foreach (string ext in fileExts)
-            {
-                string[] files = Directory.GetFiles(folderPath, ext);
-                foreach (string fileName in files)
-                {
-                    TreeNode nod = new TreeNode();
-                    nod.Name = Path.GetFileName(fileName);
-                    nod.Text = Path.GetFileName(fileName);
-                    nod.Tag = Path.GetFileName(fileName);
+			TreeNode[] treeNodesArray = new TreeNode[directoryCount];
 
-                    this.treeView1.SelectedNode.Nodes.Add(nod);
+			int i = 0;
+			int totalFileCount = 0; 
+			string[] fileExts = { "*.frm", "*.cls" };
 
-                    //Display all functions available in the file
-                    searchListOfFunctions(nod, fileName);
+			foreach (string strDir in Directory.GetDirectories(folderPath))
+			{
+				int idx = 0;
+				int fileCount = 0;
+				DirectoryInfo subfolder = new DirectoryInfo(strDir);
 
-                    //Set selected node back to the root node
-                    treeView1.SelectedNode = RootNode;
+				// iterate over all files in the subfolder and add them into treeNodesArrayforFiles
+				foreach (string ext in fileExts)
+				{
+					try
+					{
+						fileCount += Directory.GetFiles(strDir, ext).Length;
+						totalFileCount += fileCount;
+					}
+					catch (UnauthorizedAccessException) { }					
+				}
 
-                }
-            }
+				// skip if file count = 0
+				if (fileCount == 0)
+					continue;
 
-            //this.treeView1.SelectedNode.ExpandAll();
-        }
+				TreeNode[] treeNodesArrayforFiles = new TreeNode[fileCount];
+
+				foreach (string ext in fileExts)
+				{
+					string[] files = Directory.GetFiles(strDir, ext);
+					foreach (string fileName in files)
+					{
+						string eachfileName = Path.GetFileName(fileName);
+						treeNodesArrayforFiles[idx] = new TreeNode(eachfileName);
+						idx++;
+					}
+				}
+				
+				treeNodesArray[i] = new TreeNode(subfolder.Name, treeNodesArrayforFiles);
+				i++;
+			}
+
+			if (totalFileCount > 0)
+			{
+				TreeNode finalNode = new TreeNode(Path.GetFileName(folderPath), treeNodesArray);
+				this.treeView1.Nodes.Add(finalNode);
+				this.treeView1.SelectedNode = finalNode;
+				this.treeView1.SelectedNode.ExpandAll();
+			}
+		}
 
         private void close_Click(object sender, EventArgs e)
         {
@@ -531,6 +560,11 @@ namespace EasyTreeView
         }
 
 		private void revertAllButton_Click(object sender, EventArgs e)
+		{
+
+		}
+
+		private void splitContainer1_Panel2_Paint(object sender, PaintEventArgs e)
 		{
 
 		}
