@@ -31,6 +31,7 @@ namespace EasyTreeView
 			this.components = new System.ComponentModel.Container();
 			this.splitContainer1 = new System.Windows.Forms.SplitContainer();
 			this.gbxNodeInfo = new System.Windows.Forms.GroupBox();
+			this.panel1 = new System.Windows.Forms.Panel();
 			this.cbOutputDebugView = new System.Windows.Forms.CheckBox();
 			this.cbOutputLog = new System.Windows.Forms.CheckBox();
 			this.lblFilename = new System.Windows.Forms.Label();
@@ -40,34 +41,33 @@ namespace EasyTreeView
 			this.txtName = new System.Windows.Forms.TextBox();
 			this.label1 = new System.Windows.Forms.Label();
 			this.ProcessResult = new System.Windows.Forms.Label();
-			this.btnClose = new System.Windows.Forms.Button();
-			this.RevertAllBtn = new System.Windows.Forms.Button();
-			this.CodeAnalysisButton = new System.Windows.Forms.Button();
 			this.gbxSearchByText = new System.Windows.Forms.GroupBox();
 			this.btnNodeTextSearch = new System.Windows.Forms.Button();
+			this.btnClose = new System.Windows.Forms.Button();
 			this.txtNodeTextSearch = new System.Windows.Forms.TextBox();
+			this.RevertAllBtn = new System.Windows.Forms.Button();
 			this.label3 = new System.Windows.Forms.Label();
+			this.CodeAnalysisButton = new System.Windows.Forms.Button();
 			this.treeView1 = new System.Windows.Forms.TreeView();
 			this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
 			this.cmnuAddNode = new System.Windows.Forms.ToolStripMenuItem();
 			this.cmnuRemoveNode = new System.Windows.Forms.ToolStripMenuItem();
 			this.folderBrowserDialog = new System.Windows.Forms.FolderBrowserDialog();
-			this.panel1 = new System.Windows.Forms.Panel();
 			((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).BeginInit();
 			this.splitContainer1.Panel1.SuspendLayout();
 			this.splitContainer1.Panel2.SuspendLayout();
 			this.splitContainer1.SuspendLayout();
 			this.gbxNodeInfo.SuspendLayout();
+			this.panel1.SuspendLayout();
 			this.gbxSearchByText.SuspendLayout();
 			this.contextMenuStrip1.SuspendLayout();
-			this.panel1.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// splitContainer1
 			// 
 			this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
 			this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-			this.splitContainer1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.splitContainer1.Margin = new System.Windows.Forms.Padding(4);
 			this.splitContainer1.Name = "splitContainer1";
 			this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
 			// 
@@ -78,6 +78,7 @@ namespace EasyTreeView
 			// 
 			// splitContainer1.Panel2
 			// 
+			this.splitContainer1.Panel2.AutoScroll = true;
 			this.splitContainer1.Panel2.Controls.Add(this.ProcessResult);
 			this.splitContainer1.Panel2.Controls.Add(this.gbxSearchByText);
 			this.splitContainer1.Panel2.Controls.Add(this.treeView1);
@@ -96,19 +97,28 @@ namespace EasyTreeView
 			this.gbxNodeInfo.Controls.Add(this.txtName);
 			this.gbxNodeInfo.Controls.Add(this.label1);
 			this.gbxNodeInfo.Location = new System.Drawing.Point(16, 15);
-			this.gbxNodeInfo.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.gbxNodeInfo.Margin = new System.Windows.Forms.Padding(4);
 			this.gbxNodeInfo.Name = "gbxNodeInfo";
-			this.gbxNodeInfo.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.gbxNodeInfo.Padding = new System.Windows.Forms.Padding(4);
 			this.gbxNodeInfo.Size = new System.Drawing.Size(1103, 106);
 			this.gbxNodeInfo.TabIndex = 0;
 			this.gbxNodeInfo.TabStop = false;
 			this.gbxNodeInfo.Text = "Select Globe Target";
 			// 
+			// panel1
+			// 
+			this.panel1.Controls.Add(this.cbOutputDebugView);
+			this.panel1.Controls.Add(this.cbOutputLog);
+			this.panel1.Location = new System.Drawing.Point(764, 22);
+			this.panel1.Name = "panel1";
+			this.panel1.Size = new System.Drawing.Size(198, 71);
+			this.panel1.TabIndex = 11;
+			// 
 			// cbOutputDebugView
 			// 
 			this.cbOutputDebugView.AutoSize = true;
 			this.cbOutputDebugView.Location = new System.Drawing.Point(17, 30);
-			this.cbOutputDebugView.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.cbOutputDebugView.Margin = new System.Windows.Forms.Padding(4);
 			this.cbOutputDebugView.Name = "cbOutputDebugView";
 			this.cbOutputDebugView.Size = new System.Drawing.Size(164, 21);
 			this.cbOutputDebugView.TabIndex = 10;
@@ -120,7 +130,7 @@ namespace EasyTreeView
 			// 
 			this.cbOutputLog.AutoSize = true;
 			this.cbOutputLog.Location = new System.Drawing.Point(17, 4);
-			this.cbOutputLog.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.cbOutputLog.Margin = new System.Windows.Forms.Padding(4);
 			this.cbOutputLog.Name = "cbOutputLog";
 			this.cbOutputLog.Size = new System.Drawing.Size(135, 21);
 			this.cbOutputLog.TabIndex = 9;
@@ -141,7 +151,7 @@ namespace EasyTreeView
 			// btnFilename
 			// 
 			this.btnFilename.Location = new System.Drawing.Point(618, 57);
-			this.btnFilename.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnFilename.Margin = new System.Windows.Forms.Padding(4);
 			this.btnFilename.Name = "btnFilename";
 			this.btnFilename.Size = new System.Drawing.Size(139, 25);
 			this.btnFilename.TabIndex = 7;
@@ -152,7 +162,7 @@ namespace EasyTreeView
 			// txtFilename
 			// 
 			this.txtFilename.Location = new System.Drawing.Point(135, 60);
-			this.txtFilename.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtFilename.Margin = new System.Windows.Forms.Padding(4);
 			this.txtFilename.Name = "txtFilename";
 			this.txtFilename.Size = new System.Drawing.Size(470, 22);
 			this.txtFilename.TabIndex = 6;
@@ -160,7 +170,7 @@ namespace EasyTreeView
 			// btnOpenFolder
 			// 
 			this.btnOpenFolder.Location = new System.Drawing.Point(618, 26);
-			this.btnOpenFolder.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnOpenFolder.Margin = new System.Windows.Forms.Padding(4);
 			this.btnOpenFolder.Name = "btnOpenFolder";
 			this.btnOpenFolder.Size = new System.Drawing.Size(139, 25);
 			this.btnOpenFolder.TabIndex = 5;
@@ -170,7 +180,7 @@ namespace EasyTreeView
 			// txtName
 			// 
 			this.txtName.Location = new System.Drawing.Point(135, 31);
-			this.txtName.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtName.Margin = new System.Windows.Forms.Padding(4);
 			this.txtName.Multiline = true;
 			this.txtName.Name = "txtName";
 			this.txtName.Size = new System.Drawing.Size(470, 20);
@@ -195,39 +205,6 @@ namespace EasyTreeView
 			this.ProcessResult.Size = new System.Drawing.Size(0, 17);
 			this.ProcessResult.TabIndex = 1;
 			// 
-			// btnClose
-			// 
-			this.btnClose.Location = new System.Drawing.Point(674, 60);
-			this.btnClose.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			this.btnClose.Name = "btnClose";
-			this.btnClose.Size = new System.Drawing.Size(280, 46);
-			this.btnClose.TabIndex = 5;
-			this.btnClose.Text = "Close";
-			this.btnClose.UseVisualStyleBackColor = true;
-			this.btnClose.Click += new System.EventHandler(this.close_Click);
-			// 
-			// RevertAllBtn
-			// 
-			this.RevertAllBtn.Location = new System.Drawing.Point(367, 60);
-			this.RevertAllBtn.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			this.RevertAllBtn.Name = "RevertAllBtn";
-			this.RevertAllBtn.Size = new System.Drawing.Size(280, 46);
-			this.RevertAllBtn.TabIndex = 4;
-			this.RevertAllBtn.Text = "Revert All Changes";
-			this.RevertAllBtn.UseVisualStyleBackColor = true;
-			this.RevertAllBtn.Click += new System.EventHandler(this.revertAllButton_Click);
-			// 
-			// CodeAnalysisButton
-			// 
-			this.CodeAnalysisButton.Location = new System.Drawing.Point(0, 60);
-			this.CodeAnalysisButton.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
-			this.CodeAnalysisButton.Name = "CodeAnalysisButton";
-			this.CodeAnalysisButton.Size = new System.Drawing.Size(280, 46);
-			this.CodeAnalysisButton.TabIndex = 3;
-			this.CodeAnalysisButton.Text = "Code Analysis";
-			this.CodeAnalysisButton.UseVisualStyleBackColor = true;
-			this.CodeAnalysisButton.Click += new System.EventHandler(this.codeAnalysisButton_Click);
-			// 
 			// gbxSearchByText
 			// 
 			this.gbxSearchByText.Controls.Add(this.btnNodeTextSearch);
@@ -237,9 +214,9 @@ namespace EasyTreeView
 			this.gbxSearchByText.Controls.Add(this.label3);
 			this.gbxSearchByText.Controls.Add(this.CodeAnalysisButton);
 			this.gbxSearchByText.Location = new System.Drawing.Point(16, 677);
-			this.gbxSearchByText.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.gbxSearchByText.Margin = new System.Windows.Forms.Padding(4);
 			this.gbxSearchByText.Name = "gbxSearchByText";
-			this.gbxSearchByText.Padding = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.gbxSearchByText.Padding = new System.Windows.Forms.Padding(4);
 			this.gbxSearchByText.Size = new System.Drawing.Size(962, 114);
 			this.gbxSearchByText.TabIndex = 2;
 			this.gbxSearchByText.TabStop = false;
@@ -247,7 +224,7 @@ namespace EasyTreeView
 			// btnNodeTextSearch
 			// 
 			this.btnNodeTextSearch.Location = new System.Drawing.Point(618, 19);
-			this.btnNodeTextSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.btnNodeTextSearch.Margin = new System.Windows.Forms.Padding(4);
 			this.btnNodeTextSearch.Name = "btnNodeTextSearch";
 			this.btnNodeTextSearch.Size = new System.Drawing.Size(139, 28);
 			this.btnNodeTextSearch.TabIndex = 7;
@@ -255,13 +232,35 @@ namespace EasyTreeView
 			this.btnNodeTextSearch.UseVisualStyleBackColor = true;
 			this.btnNodeTextSearch.Click += new System.EventHandler(this.btnNodeTextSearch_Click);
 			// 
+			// btnClose
+			// 
+			this.btnClose.Location = new System.Drawing.Point(674, 60);
+			this.btnClose.Margin = new System.Windows.Forms.Padding(4);
+			this.btnClose.Name = "btnClose";
+			this.btnClose.Size = new System.Drawing.Size(280, 46);
+			this.btnClose.TabIndex = 5;
+			this.btnClose.Text = "Close";
+			this.btnClose.UseVisualStyleBackColor = true;
+			this.btnClose.Click += new System.EventHandler(this.close_Click);
+			// 
 			// txtNodeTextSearch
 			// 
 			this.txtNodeTextSearch.Location = new System.Drawing.Point(168, 22);
-			this.txtNodeTextSearch.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.txtNodeTextSearch.Margin = new System.Windows.Forms.Padding(4);
 			this.txtNodeTextSearch.Name = "txtNodeTextSearch";
 			this.txtNodeTextSearch.Size = new System.Drawing.Size(437, 22);
 			this.txtNodeTextSearch.TabIndex = 6;
+			// 
+			// RevertAllBtn
+			// 
+			this.RevertAllBtn.Location = new System.Drawing.Point(367, 60);
+			this.RevertAllBtn.Margin = new System.Windows.Forms.Padding(4);
+			this.RevertAllBtn.Name = "RevertAllBtn";
+			this.RevertAllBtn.Size = new System.Drawing.Size(280, 46);
+			this.RevertAllBtn.TabIndex = 4;
+			this.RevertAllBtn.Text = "Revert All Changes";
+			this.RevertAllBtn.UseVisualStyleBackColor = true;
+			this.RevertAllBtn.Click += new System.EventHandler(this.revertAllButton_Click);
 			// 
 			// label3
 			// 
@@ -273,12 +272,23 @@ namespace EasyTreeView
 			this.label3.TabIndex = 5;
 			this.label3.Text = "Function Name Search:";
 			// 
+			// CodeAnalysisButton
+			// 
+			this.CodeAnalysisButton.Location = new System.Drawing.Point(0, 60);
+			this.CodeAnalysisButton.Margin = new System.Windows.Forms.Padding(4);
+			this.CodeAnalysisButton.Name = "CodeAnalysisButton";
+			this.CodeAnalysisButton.Size = new System.Drawing.Size(280, 46);
+			this.CodeAnalysisButton.TabIndex = 3;
+			this.CodeAnalysisButton.Text = "Code Analysis";
+			this.CodeAnalysisButton.UseVisualStyleBackColor = true;
+			this.CodeAnalysisButton.Click += new System.EventHandler(this.codeAnalysisButton_Click);
+			// 
 			// treeView1
 			// 
 			this.treeView1.CheckBoxes = true;
 			this.treeView1.ContextMenuStrip = this.contextMenuStrip1;
 			this.treeView1.Location = new System.Drawing.Point(16, 26);
-			this.treeView1.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.treeView1.Margin = new System.Windows.Forms.Padding(4);
 			this.treeView1.Name = "treeView1";
 			this.treeView1.Size = new System.Drawing.Size(962, 643);
 			this.treeView1.TabIndex = 0;
@@ -309,22 +319,13 @@ namespace EasyTreeView
 			this.cmnuRemoveNode.Text = "Remove Node";
 			this.cmnuRemoveNode.Click += new System.EventHandler(this.cmnuRemoveNode_Click);
 			// 
-			// panel1
-			// 
-			this.panel1.Controls.Add(this.cbOutputDebugView);
-			this.panel1.Controls.Add(this.cbOutputLog);
-			this.panel1.Location = new System.Drawing.Point(764, 22);
-			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(198, 71);
-			this.panel1.TabIndex = 11;
-			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
 			this.ClientSize = new System.Drawing.Size(1006, 996);
 			this.Controls.Add(this.splitContainer1);
-			this.Margin = new System.Windows.Forms.Padding(4, 4, 4, 4);
+			this.Margin = new System.Windows.Forms.Padding(4);
 			this.Name = "Form1";
 			this.Text = "Globe System Logger";
 			this.splitContainer1.Panel1.ResumeLayout(false);
@@ -334,11 +335,11 @@ namespace EasyTreeView
 			this.splitContainer1.ResumeLayout(false);
 			this.gbxNodeInfo.ResumeLayout(false);
 			this.gbxNodeInfo.PerformLayout();
+			this.panel1.ResumeLayout(false);
+			this.panel1.PerformLayout();
 			this.gbxSearchByText.ResumeLayout(false);
 			this.gbxSearchByText.PerformLayout();
 			this.contextMenuStrip1.ResumeLayout(false);
-			this.panel1.ResumeLayout(false);
-			this.panel1.PerformLayout();
 			this.ResumeLayout(false);
 
         }
