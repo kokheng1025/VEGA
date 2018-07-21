@@ -14,7 +14,6 @@ namespace EasyTreeView
 {
     public partial class Form1 : Form
     {
-		public string FolderPath { get; set; }
         Settings oSettings = new Settings();
         PathSettings oPath;
 
@@ -314,8 +313,7 @@ namespace EasyTreeView
 			DialogResult result = this.folderBrowserDialog.ShowDialog();
 			if (result == DialogResult.OK)
 			{
-				FolderPath = this.folderBrowserDialog.SelectedPath;
-				GetTreeView(FolderPath);
+				GetTreeView(this.folderBrowserDialog.SelectedPath);
 			}
 		}
 
