@@ -111,7 +111,7 @@ namespace EasyTreeView
 			this.panel1.Controls.Add(this.cbOutputLog);
 			this.panel1.Location = new System.Drawing.Point(764, 22);
 			this.panel1.Name = "panel1";
-			this.panel1.Size = new System.Drawing.Size(198, 71);
+			this.panel1.Size = new System.Drawing.Size(214, 71);
 			this.panel1.TabIndex = 11;
 			// 
 			// cbOutputDebugView
@@ -120,9 +120,9 @@ namespace EasyTreeView
 			this.cbOutputDebugView.Location = new System.Drawing.Point(17, 30);
 			this.cbOutputDebugView.Margin = new System.Windows.Forms.Padding(4);
 			this.cbOutputDebugView.Name = "cbOutputDebugView";
-			this.cbOutputDebugView.Size = new System.Drawing.Size(164, 21);
+			this.cbOutputDebugView.Size = new System.Drawing.Size(180, 21);
 			this.cbOutputDebugView.TabIndex = 10;
-			this.cbOutputDebugView.Text = "Output to DebugView";
+			this.cbOutputDebugView.Text = "Display to DebugViewer";
 			this.cbOutputDebugView.UseVisualStyleBackColor = true;
 			this.cbOutputDebugView.CheckedChanged += new System.EventHandler(this.cbOutputDebugView_CheckedChanged);
 			// 
@@ -132,9 +132,9 @@ namespace EasyTreeView
 			this.cbOutputLog.Location = new System.Drawing.Point(17, 4);
 			this.cbOutputLog.Margin = new System.Windows.Forms.Padding(4);
 			this.cbOutputLog.Name = "cbOutputLog";
-			this.cbOutputLog.Size = new System.Drawing.Size(135, 21);
+			this.cbOutputLog.Size = new System.Drawing.Size(136, 21);
 			this.cbOutputLog.TabIndex = 9;
-			this.cbOutputLog.Text = "Output to Logfile";
+			this.cbOutputLog.Text = "Generate Logfile";
 			this.cbOutputLog.UseVisualStyleBackColor = true;
 			this.cbOutputLog.CheckedChanged += new System.EventHandler(this.cbOutputLog_CheckedChanged);
 			// 
@@ -213,7 +213,7 @@ namespace EasyTreeView
 			this.gbxSearchByText.Controls.Add(this.RevertAllBtn);
 			this.gbxSearchByText.Controls.Add(this.label3);
 			this.gbxSearchByText.Controls.Add(this.CodeAnalysisButton);
-			this.gbxSearchByText.Location = new System.Drawing.Point(16, 677);
+			this.gbxSearchByText.Location = new System.Drawing.Point(16, 728);
 			this.gbxSearchByText.Margin = new System.Windows.Forms.Padding(4);
 			this.gbxSearchByText.Name = "gbxSearchByText";
 			this.gbxSearchByText.Padding = new System.Windows.Forms.Padding(4);
@@ -290,7 +290,7 @@ namespace EasyTreeView
 			this.treeView1.Location = new System.Drawing.Point(16, 26);
 			this.treeView1.Margin = new System.Windows.Forms.Padding(4);
 			this.treeView1.Name = "treeView1";
-			this.treeView1.Size = new System.Drawing.Size(962, 643);
+			this.treeView1.Size = new System.Drawing.Size(962, 694);
 			this.treeView1.TabIndex = 0;
 			this.treeView1.AfterCheck += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterCheck);
 			this.treeView1.AfterSelect += new System.Windows.Forms.TreeViewEventHandler(this.treeView1_AfterSelect);
