@@ -352,7 +352,7 @@ namespace GlobeSystemLog
 		}
 
 
-		public static int Initialize(string sourceFolder)
+		public static int Initialize(string sourceFolder, bool initFolder)
 		{
 			string tempFolder = Path.Combine(sourceFolder, "temp");
 
@@ -364,14 +364,17 @@ namespace GlobeSystemLog
 			}
 			else
 			{
-				Directory.Delete(tempFolder, true);
-				while (Directory.Exists(tempFolder))
+				if (initFolder == true)
 				{
-					System.Threading.Thread.Sleep(100);
-				}
+					Directory.Delete(tempFolder, true);
+					while (Directory.Exists(tempFolder))
+					{
+						System.Threading.Thread.Sleep(100);
+					}
 
-				Directory.CreateDirectory(tempFolder);
-				System.Threading.Thread.Sleep(500);
+					Directory.CreateDirectory(tempFolder);
+					System.Threading.Thread.Sleep(500);
+				}
 			}
 
 			// make sure temp folder is exist
@@ -387,8 +390,8 @@ namespace GlobeSystemLog
 
 				string vbpFile = Path.Combine(tempFolder, vbpFileName + "__");
 
-				if (AddGLBSysLogModule(files[0], vbpFile) != (int)SystemLogStatusCode.Success)
-					return (int)SystemLogStatusCode.InitError;
+				//if (AddGLBSysLogModule(files[0], vbpFile) != (int)SystemLogStatusCode.Success)
+				//	return (int)SystemLogStatusCode.InitError;
 			}
 			else
 				return (int)SystemLogStatusCode.InitError;

@@ -206,20 +206,20 @@ namespace EasyTreeView
                     //Add files/function into the checked List
                     checkedNodes.Add(tn);
 
-                    //If function is checked
-                    if (checkFileOrFunction == 2 && parentFileFound == false)
-                    {
-                        //Check if parent file has been included into the checked List
-                        foreach (TreeNode n in checkedNodes)
-                        {
-                            //Add parent file into the checked List
-                            if (tn.Parent.Text.Equals(n.Text)) parentFileFound = true;
-                        }
+                    ////If function is checked
+                    //if (checkFileOrFunction == 2 && parentFileFound == false)
+                    //{
+                    //    //Check if parent file has been included into the checked List
+                    //    foreach (TreeNode n in checkedNodes)
+                    //    {
+                    //        //Add parent file into the checked List
+                    //        if (tn.Parent.Text.Equals(n.Text)) parentFileFound = true;
+                    //    }
 
-                        //Add parent of node(file) into the checked list
-                        if (parentFileFound == false) checkedNodes.Add(tn.Parent);
+                    //    //Add parent of node(file) into the checked list
+                    //    if (parentFileFound == false) checkedNodes.Add(tn.Parent);
 
-                    }
+                    //}
                 }
                 //To check which functions has been checked
                 FindCheckedNodes(checkedNodes, tn, checkFileOrFunction + 1);
@@ -512,8 +512,7 @@ namespace EasyTreeView
 			}
 
 			if (totalFileCount > 0)
-			{
-				
+			{				
 				TreeNode finalNode = new TreeNode(Path.GetFileName(folderPath), treeNodesArray);
 				this.treeView1.Nodes.Add(finalNode);
 				this.treeView1.SelectedNode = finalNode;
@@ -534,28 +533,69 @@ namespace EasyTreeView
 
 			CheckedFiles.Clear();
 			List<TreeNode> checkedNodes = CheckedNodes();
+			List<string> targetFolderDir = new List<string>();
 			foreach (TreeNode n in checkedNodes)
 			{
-				CheckedFiles.Add(n.Text);
-			}
+				//CheckedFiles.Add(n.Text);
+				String[] pathSeparators = new String[] { "\\" };
+				String[] pathSplitter = n.FullPath.Split(pathSeparators, StringSplitOptions.RemoveEmptyEntries);
 
-			if (Utils.Initialize(oPath.TargetFolder) == (int)SystemLogStatusCode.Success)
-			{
-				foreach (string file in CheckedFiles)
+				// error
+				if (pathSplitter.Length > 4)
 				{
-					if (isFunction(file))
-					{
-						// code analysis
-						CodeParser parser = new CodeParser();
-						status = parser.ParseFile(Path.Combine(oPath.TargetFolder, file), CheckedFiles);
-						if (status != (int)SystemLogStatusCode.Success)
-						{
-							targetFile = file;
-							break;
-						}
-					}
+					MessageBox.Show("Unable to open target folder!!");
+					return;
+				}
+
+				int targetFolderLevel = pathSplitter.Length == 3 ? 0 : 1;
+				if (!targetFolderDir.Contains(pathSplitter[targetFolderLevel]))
+				{
+					targetFolderDir.Add(pathSplitter[targetFolderLevel]);
 				}
 			}
+
+			foreach (string dir in targetFolderDir)
+			{
+				bool initFolder = true;
+				foreach(TreeNode n in checkedNodes)
+				{
+					String[] pathSeparators = new String[] { "\\" };
+					String[] pathSplitter = n.FullPath.Split(pathSeparators, StringSplitOptions.RemoveEmptyEntries);
+
+					//string parentFolder = n.Parent.FullPath;
+					int targetFolderLevel = pathSplitter.Length == 3 ? 0 : 1;
+					if (dir == pathSplitter[targetFolderLevel])
+					{
+						string targetfolderPath;
+						if (targetFolderLevel == 1)
+							targetfolderPath = Path.Combine(oPath.TargetFolder, pathSplitter[1]);
+						else
+							targetfolderPath = oPath.TargetFolder;
+
+						if (Utils.Initialize(targetfolderPath, initFolder) == (int)SystemLogStatusCode.Success)
+						{
+							//foreach (string file in CheckedFiles)
+							//{
+							//	if (isFunction(file))
+							//	{
+							//		// code analysis
+							//		CodeParser parser = new CodeParser();
+							//		status = parser.ParseFile(Path.Combine(oPath.TargetFolder, file), CheckedFiles);
+							//		if (status != (int)SystemLogStatusCode.Success)
+							//		{
+							//			targetFile = file;
+							//			break;
+							//		}
+							//	}
+							//}
+						}
+
+						initFolder = false;
+					}
+
+				}
+			}
+
 
 			// overwrite all processed files into original folder 
 			DialogResult dialogResult = MessageBox.Show("Overwrite the original files ?", "Add GlobeSystemLog Trace",
